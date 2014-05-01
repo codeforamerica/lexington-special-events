@@ -5,9 +5,9 @@ class ParksController < ApplicationController
     respond_to do |format|
       format.html {}
       format.json { render json: [
-        { name: 'Masterson', amenities: ['my amenity'] },
-        { name: 'Other park', amenities: ['your amenity'] }
-      ] }
+        {properties: {name: 'Masterson', amenities: ['my amenity']}},
+        {properties: {name: 'Other park', amenities: ['your amenity']}}
+      ]}
     end
   end
 end

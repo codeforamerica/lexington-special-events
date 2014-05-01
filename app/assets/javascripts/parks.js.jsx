@@ -30,7 +30,7 @@ $(function() {
   var ParksList = React.createClass({
     render: function() {
       var parkNodes = this.props.parks.map(function (park) {
-        return <Park name={park.name}>{park.amenities}</Park>;
+        return <Park name={park.properties.name}>{park.properties.amenities}</Park>;
       });
       return (
         <div className="parkList">
@@ -47,7 +47,7 @@ $(function() {
       if (amenities.length === 0 ) { return this.state.allParks; }
 
       return _.select(this.state.allParks, function(park) {
-        var i = _.intersection(park.amenities, amenities);
+        var i = _.intersection(park.properties.amenities, amenities);
         return i.length > 0;
       });
     },
