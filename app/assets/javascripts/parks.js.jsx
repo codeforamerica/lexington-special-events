@@ -8,7 +8,9 @@ $(function() {
       var amenities = ['my amenity', 'your amenity'];
       var checkboxes = _.map(amenities, function(amenity) {
         return (
-          <input type="checkbox" value={amenity} onChange={_this.handleChange} />
+          <label>{amenity}
+            <input type="checkbox" value={amenity} onChange={_this.handleChange} />
+          </label>
         );
       });
       return (
@@ -24,16 +26,6 @@ $(function() {
         this.props.onParkSubmit([]);
       }
     },
-    // handleSubmit: function() {
-    //   // var name = this.refs.name.getDOMNode().value.trim();
-    //   // var amenities = this.refs.amenity.getDOMNode().value;
-    //   debugger
-    //   console.log('handleSubmit: ' + amenities);
-    //   this.props.onParkSubmit([amenities]);
-    //   // this.refs.name.getDOMNode().value = '';
-    //   // this.refs.amenities.getDOMNode().value = '';
-    //   return false;
-    // }
   });
   var ParksList = React.createClass({
     render: function() {
