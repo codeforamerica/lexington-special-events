@@ -4,24 +4,17 @@
 $(function() {
   var ParksForm = React.createClass({
     render: function() {
-      return (<div></div>);
       return (
         <form className="parkForm" onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Your name" ref="name" value="foo" />
-          <input
-            type="text"
-            placeholder="Say something..."
-            value="foo"
-            ref="amenities"
-          />
+          <input type="checkbox" name="amenity" value="my amenity" />
+          <input type="checkbox" name="amenity" value="your amenity" />
           <input type="submit" value="Post" />
         </form>
       );
     },
     handleSubmit: function() {
-      var name = this.refs.name.getDOMNode().value.trim();
-      var amenities = this.refs.amenities.getDOMNode().value.trim();
-      this.props.onParkSubmit({name: name, amenities: amenities});
+      // var name = this.refs.name.getDOMNode().value.trim();
+      this.props.onParkSubmit({name: name, amenities: 'my amenity'});
       // this.refs.name.getDOMNode().value = '';
       // this.refs.amenities.getDOMNode().value = '';
       return false;
@@ -45,17 +38,17 @@ $(function() {
     },
     handleParkSubmit: function(park) {
       var parks = this.state.parks;
-      var newParks = parks.concat([park]);
-      this.setState({parks: newParks});
-      $.ajax({
-        url: this.props.url,
-        dataType: 'json',
-        type: 'POST',
-        data: park,
-        success: function(data) {
-          this.setState({data: data});
-        }.bind(this)
-      });
+      // var newParks = parks.concat([park]);
+      this.setState({parks: []});
+      // $.ajax({
+      //   url: this.props.url,
+      //   dataType: 'json',
+      //   type: 'POST',
+      //   data: park,
+      //   success: function(data) {
+      //     this.setState({data: data});
+      //   }.bind(this)
+      // });
     },
     loadParksFromServer: function() {
       $.ajax({
