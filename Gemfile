@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 
 gem 'jquery-rails'
+gem 'foundation-rails'
 gem 'pg'
 gem 'rails', '4.1.0'
 gem 'react-rails'
