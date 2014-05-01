@@ -2,66 +2,67 @@
  * @jsx React.DOM
  */
 $(function() {
-  var CommentForm = React.createClass({
+  var ParksForm = React.createClass({
     render: function() {
+      return (<div></div>);
       return (
-        <form className="commentForm" onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Your name" ref="author" value="foo" />
+        <form className="parkForm" onSubmit={this.handleSubmit}>
+          <input type="text" placeholder="Your name" ref="name" value="foo" />
           <input
             type="text"
             placeholder="Say something..."
             value="foo"
-            ref="text"
+            ref="amenities"
           />
           <input type="submit" value="Post" />
         </form>
       );
     },
     handleSubmit: function() {
-      var author = this.refs.author.getDOMNode().value.trim();
-      var text = this.refs.text.getDOMNode().value.trim();
-      this.props.onCommentSubmit({author: author, text: text});
-      // this.refs.author.getDOMNode().value = '';
-      // this.refs.text.getDOMNode().value = '';
+      var name = this.refs.name.getDOMNode().value.trim();
+      var amenities = this.refs.amenities.getDOMNode().value.trim();
+      this.props.onParkSubmit({name: name, amenities: amenities});
+      // this.refs.name.getDOMNode().value = '';
+      // this.refs.amenities.getDOMNode().value = '';
       return false;
     }
   });
-  var CommentList = React.createClass({
+  var ParksList = React.createClass({
     render: function() {
-      var commentNodes = this.props.data.map(function (comment) {
-        return <Comment author={comment.author}>{comment.text}</Comment>;
+      var parkNodes = this.props.parks.map(function (park) {
+        return <Park name={park.name}>{park.amenities}</Park>;
       });
       return (
-        <div className="commentList">
-          {commentNodes}
+        <div className="parkList">
+          {parkNodes}
         </div>
       );
     }
   });
-  var CommentBox = React.createClass({
+  var Search = React.createClass({
     getInitialState: function() {
-      return {data: []}
+      return {parks: []}
     },
-    handleCommentSubmit: function(comment) {
-      var comments = this.state.data;
-      var newComments = comments.concat([comment]);
-      this.setState({data: newComments});
+    handleParkSubmit: function(park) {
+      var parks = this.state.parks;
+      var newParks = parks.concat([park]);
+      this.setState({parks: newParks});
       $.ajax({
         url: this.props.url,
         dataType: 'json',
         type: 'POST',
-        data: comment,
+        data: park,
         success: function(data) {
           this.setState({data: data});
         }.bind(this)
       });
     },
-    loadCommentsFromServer: function() {
+    loadParksFromServer: function() {
       $.ajax({
         url: this.props.url,
         dataType: 'json',
-        success: function(data) {
-          this.setState({data: data});
+        success: function(parks) {
+          this.setState({parks: parks});
         }.bind(this),
         error: function(xhr, status, err) {
           console.error(this.props.url, status, err.toString());
@@ -69,27 +70,26 @@ $(function() {
       });
     },
     componentWillMount: function() {
-      this.loadCommentsFromServer();
-      // setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+      this.loadParksFromServer();
+      // setInterval(this.loadParksFromServer, this.props.pollInterval);
     },
     render: function() {
       return (
-        <div className="commentBox">
-          <h1>Comments</h1>
-          <CommentList data={this.state.data}/>
-          <CommentForm onCommentSubmit={this.handleCommentSubmit} />
+        <div className="search">
+          <h1>Parks Search</h1>
+          <ParksList parks={this.state.parks}/>
+          <ParksForm onParkSubmit={this.handleParkSubmit} />
         </div>
       );
     }
   });
-  var converter = new Showdown.converter();
-  var Comment = React.createClass({
+  var Park = React.createClass({
     render: function() {
-      var rawMarkup = converter.makeHtml(this.props.children.toString());
+      var rawMarkup = this.props.children.toString();
       return (
-        <div className="comment">
-          <h2 className="commentAuthor">
-            {this.props.author}
+        <div className="park">
+          <h2 className="parkAuthor">
+            {this.props.name}
           </h2>
           <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
         </div>
@@ -97,7 +97,7 @@ $(function() {
     }
   });
   React.renderComponent(
-    <CommentBox url="parks.json" pollInterval={20000} />,
+    <Search url="parks.json" />,
     document.getElementById('content')
   );
 });
