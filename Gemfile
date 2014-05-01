@@ -5,8 +5,6 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'rails', '4.1.0'
 gem 'sass-rails', '~> 4.0.3'
+gem 'spring',        group: :development
 gem 'uglifier', '>= 1.3.0'
 
-# may be on the chopping block
-gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'spring',        group: :development
