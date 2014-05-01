@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'searches#new'
+  root 'parks#index'
 
-  resources :searches
+  resources :parks
 end
