@@ -77,8 +77,7 @@ var Search = React.createClass({
     if (amenities.length === 0 ) { return this.state.parks; }
 
     return _.select(this.state.parks, function(park) {
-      var i = _.intersection(park.properties.amenities, amenities);
-      return i.length > 0;
+      return park.properties.amenities[amenities[0]] === 1;
     });
   },
   handleParkSubmit: function(amenities) {
@@ -97,13 +96,14 @@ var Search = React.createClass({
     });
   },
   setParks: function(parksGeo) {
-    var amenities = ['basketball'];
+    var amenityKeys = ['BASKETBALL'];
+
     var parks = _.map(parksGeo.features, function(park) {
-      park.properties.amenities = park.properties['BASKETBALL'] ? ['basketball'] : [];
+      park.properties.amenities = _.pick(park.properties, amenityKeys);
       return park;
     });
 
-    this.setState({parks: parks, filteredParks: parks, amenities: amenities});
+    this.setState({parks: parks, filteredParks: parks, amenities: amenityKeys});
   },
   componentWillMount: function() {
     this.loadParksFromServer();
@@ -126,8 +126,8 @@ var Search = React.createClass({
 
 var Park = React.createClass({
   render: function() {
-    var amenities = _.map(this.props.amenities, function(amenity) {
-      return (<p>{amenity}</p>);
+    var amenities = _.map(this.props.amenities, function(amenityVal, amenity) {
+      return (<p>{amenity}: {amenityVal}</p>);
     });
     return (
       <li>
