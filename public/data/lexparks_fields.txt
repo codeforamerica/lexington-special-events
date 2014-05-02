@@ -1,0 +1,37 @@
+NAME         DESCRIPTION                         TYPE
+--------------------------------------------------------------
+DISTRICT     Council District                    Text
+YEAR_ACQUI   Year Acquired                       Text
+AMPHITHEAT   Amphitheater                        Text
+BASEBALL_SO  # of Baseball or Softball Fields    Text
+BASKETBALL   # of Basketball Courts              Long Integer
+HARDCOURT    # of Hardcourts                     Long Integer
+BOAT         Boat Docks                          Text
+COMMUNITY_   Community Center - Seniors          Text
+COMMUNITY1   Community Center - Youth & Adult    Text
+DAY_CAMP     Day Camp                            Text
+COMMUNIT_1   Community Gardens                   Text
+DISC_GOLF    Disc Golf                           Text
+DOG_PARKS    Dog Parks                           Text
+EQUESTRIAN   Equestrian                          Text
+FISHING      Fishing                             Text
+FOOTBALL_S   # of Football or Soccer Fields      Long Int
+GOLF         Golf Course                         Text
+GYMNASIUM    Gymnasium                           Text
+HORSESHOES   # of Horseshoe Pitches(?)           Long Int
+LAKE_POND    Lake or Pond                        Text
+NATURE_PRO   Nature Programs                     Text
+NEIGHBORHO   Neighborhood Buildings              Text
+OPEN_FIELD   Open Fields or Passive Wooded Area  Text
+PAVED_TRAI   Miles of Paved Trail                Double
+UNPAVED_TR   Miles of Unpaved Trail              Text
+PICNIC_ARE   Picnic Tables                       Long Int
+PICNIC_A_1   Grills                              Long Int
+PLAYGROUND   Playgrounds                         Text
+RESTROOMS    Restrooms                           Text
+SHELTER      # of Shelters                       Text
+SPECIAL_EV   # of Special Event Spaces           Text
+SWIMMING     Swimming                            Text
+TENNIS_COU   # of Tennis Courts                  Long Int
+VOLLEYBALL   # of Volleyball Courts              Long Int
+WEIGHT_ROO   Weight Rooms                        Text
