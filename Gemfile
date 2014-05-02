@@ -12,4 +12,8 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'spring',        group: :development
 gem 'uglifier', '>= 1.3.0'
 
+group :test, :development do
+  gem 'jasmine-rails'
+end
+
 ruby '2.1.1'
