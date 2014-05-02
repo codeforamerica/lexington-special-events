@@ -15,14 +15,7 @@ var ParksForm = React.createClass({
       <form>
         <div className="row">
           <div className="large-4 columns">
-            <label>By Amenity
-              <select>
-                <option value="Basketball">Basketball Court</option>
-                <option value="Soccer">Soccer Field</option>
-                <option value="Football">Football Field</option>
-                <option value="Tennis">Tennis Court</option>
-              </select>
-            </label>
+            {checkboxes}
           </div>
           <div className="large-4 columns">
             <label>By Zip Code
@@ -56,7 +49,7 @@ var ParksForm = React.createClass({
 var ParksList = React.createClass({
   render: function() {
     var parkNodes = _.map(this.props.filteredParks, function (park) {
-      var amenities = park.properties['BASKETBALL'] ? ['basketball'] : [];
+      var amenities = park.properties.amenities;
       return <Park name={park.properties['PARK_NAME']} amenities={amenities} />
     });
 
@@ -103,9 +96,14 @@ var Search = React.createClass({
       }.bind(this)
     });
   },
-  setParks: function(parks) {
-    var amenities = ['my amenity', 'your amenity'];
-    this.setState({parks: parks.features, filteredParks: parks.features, amenities: amenities});
+  setParks: function(parksGeo) {
+    var amenities = ['basketball'];
+    var parks = _.map(parksGeo.features, function(park) {
+      park.properties.amenities = park.properties['BASKETBALL'] ? ['basketball'] : [];
+      return park;
+    });
+
+    this.setState({parks: parks, filteredParks: parks, amenities: amenities});
   },
   componentWillMount: function() {
     this.loadParksFromServer();
