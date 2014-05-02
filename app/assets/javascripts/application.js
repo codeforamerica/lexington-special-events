@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require react
+//= require lodash
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
