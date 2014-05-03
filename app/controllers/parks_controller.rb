@@ -4,10 +4,7 @@ class ParksController < ApplicationController
   def index
     respond_to do |format|
       format.html {}
-      format.json { render json: [
-        {properties: {name: 'Masterson', amenities: ['my amenity']}},
-        {properties: {name: 'Other park', amenities: ['your amenity']}}
-      ]}
+      format.json { render file: 'public/data/lexparks' }
     end
   end
 end
