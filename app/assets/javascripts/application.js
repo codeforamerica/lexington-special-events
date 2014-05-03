@@ -15,6 +15,7 @@
 //= require foundation
 //= require react
 //= require lodash
+//= require leaflet
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
