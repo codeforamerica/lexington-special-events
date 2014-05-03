@@ -139,10 +139,3 @@ var Park = React.createClass({
     );
   }
 });
-
-$(function() {
-  React.renderComponent(
-    <Search url="parks.json" />,
-    document.getElementById('content')
-  );
-});

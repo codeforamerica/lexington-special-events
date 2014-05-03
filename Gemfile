@@ -7,7 +7,7 @@ gem 'pg'
 gem 'rails', '4.1.0'
 gem 'rails_12factor', group: :production
 gem 'rails-assets-lodash'
-gem 'react-rails' # use gem rather than rails-assets to simplify jsx
+gem 'react-rails', '1.0.0.pre', :git => 'https://github.com/reactjs/react-rails.git'
 gem 'rspec-rails', group: :test
 gem 'sass-rails', '~> 4.0.3'
 gem 'spring',        group: :development
