@@ -77,7 +77,9 @@ var Search = React.createClass({
     if (amenities.length === 0 ) { return this.state.parks; }
 
     return _.select(this.state.parks, function(park) {
-      return park.properties.amenities[amenities[0]] === 1;
+      var filterOn = amenities[0];
+      return (park.properties.amenities[filterOn] === 1 ||
+        park.properties.amenities[filterOn] === 'Yes');
     });
   },
   handleParkSubmit: function(amenities) {
@@ -96,7 +98,7 @@ var Search = React.createClass({
     });
   },
   setParks: function(parksGeo) {
-    var amenityKeys = ['BASKETBALL'];
+    var amenityKeys = ['BASKETBALL', 'FISHING'];
 
     var parks = _.map(parksGeo.features, function(park) {
       park.properties.amenities = _.pick(park.properties, amenityKeys);
