@@ -86,16 +86,17 @@ var Search = React.createClass({
     this.setState({filteredParks: this.filterParks(amenities)});
   },
   loadParksFromServer: function() {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      success: function(parks) {
-        this.setParks(parks)
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+    this.setParks(theParks);
+    // $.ajax({
+    //   url: this.props.url,
+    //   dataType: 'json',
+    //   success: function(parks) {
+    //     this.setParks(parks)
+    //   }.bind(this),
+    //   error: function(xhr, status, err) {
+    //     console.error(this.props.url, status, err.toString());
+    //   }.bind(this)
+    // });
   },
   setParks: function(parksGeo) {
     var amenityKeys = ['BASKETBALL', 'FISHING'];

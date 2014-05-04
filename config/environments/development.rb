@@ -35,4 +35,9 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   config.react.variant = :development
+
+  config.react.max_renderers = 10
+  config.react.timeout = 20 #seconds
+  config.react.react_js = lambda {File.read(::Rails.application.assets.resolve('react.js'))}
+  config.react.component_filenames = ['theparks.js', 'lodash', 'parks.js.jsx']
 end
