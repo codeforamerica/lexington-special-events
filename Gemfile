@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
+gem 'jquery-rails'
 gem 'foundation-rails'
 gem 'pg'
 gem 'rails', '4.1.0'
 gem 'rails_12factor', group: :production
 gem 'rails-assets-lodash'
-gem 'rails-assets-jquery'
 gem 'react-rails', '1.0.0.pre', :git => 'https://github.com/reactjs/react-rails.git'
 gem 'rspec-rails', group: :test
 gem 'sass-rails', '~> 4.0.3'
@@ -15,6 +15,7 @@ gem "therubyracer", :platforms => :ruby
 gem 'uglifier', '>= 1.3.0'
 
 group :test, :development do
+  gem 'debugger'
   gem 'jasmine-rails'
 end
 
