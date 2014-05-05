@@ -65,7 +65,7 @@ var ParksList = React.createClass({
 
     return (
       <div className="row">
-        <div className="large-4 columns">
+        <div className="large-4 columns search-results">
           <p>Total of <strong>{parkNodes.length}</strong> park{parkNodes.length !== 1 ? 's' : ''}</p>
           <ol>
             {parkNodes}
