@@ -7,6 +7,7 @@ gem 'pg'
 gem 'rails', '4.1.0'
 gem 'rails_12factor', group: :production
 gem 'rails-assets-lodash'
+gem 'rails-assets-es5-shim'
 gem 'react-rails', '1.0.0.pre', :git => 'https://github.com/reactjs/react-rails.git'
 gem 'rspec-rails', group: :test
 gem 'sass-rails', '~> 4.0.3'
