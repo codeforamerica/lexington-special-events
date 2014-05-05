@@ -15,7 +15,12 @@ var ParksForm = React.createClass({
       <form>
         <div className="row">
           <div className="large-4 columns">
-            {checkboxes}
+            <label>By Amenity
+              <select>
+                <option value="show-amenities">Show Amenities</option>
+                <option value="hide-amenities">Hide Amenities</option>
+              </select>
+            </label>
           </div>
           <div className="large-4 columns">
             <label>By Zip Code
@@ -26,6 +31,11 @@ var ParksForm = React.createClass({
             <label>By Name
               <input type="text" placeholder="Enter Park Name" />
             </label>
+          </div>
+        </div>
+        <div className="row">
+          <div className="large-4 columns">
+            {checkboxes}
           </div>
         </div>
         <div className="row">
