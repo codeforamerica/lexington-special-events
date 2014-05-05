@@ -16,6 +16,7 @@
 //= require react
 //= require lodash
 //= require leaflet
+//= require lexParks
 //= require parks.js.jsx
 
 $(function(){ $(document).foundation(); });
