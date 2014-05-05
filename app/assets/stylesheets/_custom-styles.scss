@@ -20,3 +20,7 @@
   -moz-column-gap:40px; /* Firefox */
   column-gap:40px;
 }
+
+input[type='checkbox'] {
+  margin-right: rem-calc(7);
+}
