@@ -21,4 +21,10 @@ group :test, :development do
   gem 'jasmine-rails'
 end
 
+group :test do
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'spring-commands-rspec'
+end
+
 ruby '2.1.1'
