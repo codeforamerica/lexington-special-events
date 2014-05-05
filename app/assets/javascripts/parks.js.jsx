@@ -149,8 +149,10 @@ $(function() {
   var map;
 
   map = L.map("map", {
-    zoom: 12,
-    center: [38.042,-84.515]
+    zoom: 11,
+    center: [38.042,-84.515],
+    maxZoom: 14,
+    minZoom: 10
   });
 
   var basemapTiles = L.tileLayer('http://{s}.tiles.mapbox.com/v3/codeforamerica.i3l4b022/{z}/{x}/{y}.png').addTo(map);
@@ -168,7 +170,8 @@ $(function() {
     onEachFeature: function(feature, layer) {
       layer.on('click', function(e) {
         map.fitBounds(e.target.getBounds());
-      })
+      });
+      layer.bindPopup("This is " + feature.properties.PARK_NAME + "!");
     }
   })
   .addTo(map);
