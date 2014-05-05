@@ -48,6 +48,7 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
+    leaflet-rails (0.7.2)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -134,6 +135,7 @@ DEPENDENCIES
   foundation-rails
   jasmine-rails
   jquery-rails
+  leaflet-rails
   pg
   rails (= 4.1.0)
   rails-assets-lodash
