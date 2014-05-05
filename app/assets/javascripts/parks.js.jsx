@@ -4,11 +4,15 @@
 var ParksForm = React.createClass({
   render: function() {
     var _this = this;
-    var checkboxes = _.map(this.props.amenities, function(amenity) {
+    var checkboxes = _.map(_.range(0, 10), function(amenity) {
+      var amenity = _this.props.amenities[0];
       return (
-        <label>{amenity}
-          <input type="checkbox" value={amenity} onChange={_this.handleChange} />
-        </label>
+        <li>
+          <label>
+            <input type="checkbox" value={amenity} onChange={_this.handleChange} />
+            {amenity}
+          </label>
+        </li>
       );
     });
     return (
@@ -35,7 +39,9 @@ var ParksForm = React.createClass({
         </div>
         <div className="row">
           <div className="large-4 columns">
-            {checkboxes}
+            <ul className="no-bullet">
+              {checkboxes}
+            </ul>
           </div>
         </div>
         <div className="row">
