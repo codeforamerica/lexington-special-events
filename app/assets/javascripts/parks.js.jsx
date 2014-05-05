@@ -145,6 +145,7 @@ $(function() {
     <Search url="parks.json" />,
     document.getElementById('content')
   );
+  
   var map;
 
   map = L.map("map", {
@@ -152,4 +153,5 @@ $(function() {
     center: [45.518867, -122.665408]
   });
   var basemapTiles = L.tileLayer('http://{s}.tiles.mapbox.com/v3/codeforamerica.i3l4b022/{z}/{x}/{y}.png').addTo(map);
+  
 });

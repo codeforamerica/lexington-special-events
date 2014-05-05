@@ -17,6 +17,5 @@
 //= require lodash
 //= require leaflet
 //= require parks.js.jsx
-//= require parksMap
 
 $(function(){ $(document).foundation(); });
