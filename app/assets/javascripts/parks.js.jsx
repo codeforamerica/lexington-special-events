@@ -62,7 +62,7 @@ var ParksList = React.createClass({
           </ol>
         </div>
         <div className="large-8 columns">
-          <div id='map'></div>
+          <div id="map"></div>
         </div>
       </div>
     );
