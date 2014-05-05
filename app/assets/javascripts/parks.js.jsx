@@ -98,21 +98,11 @@ var Search = React.createClass({
         park.properties.amenities[filterOn] === 'Yes');
     });
   },
-  handleParkSubmit: function(amenities) {
+  handleParkSearch: function(amenities) {
     this.setState({filteredParks: this.filterParks(amenities)});
   },
   loadParksFromServer: function() {
     this.setParks(theParks);
-    // $.ajax({
-    //   url: this.props.url,
-    //   dataType: 'json',
-    //   success: function(parks) {
-    //     this.setParks(parks)
-    //   }.bind(this),
-    //   error: function(xhr, status, err) {
-    //     console.error(this.props.url, status, err.toString());
-    //   }.bind(this)
-    // });
   },
   setParks: function(parksGeo) {
     var amenityKeys = ['BASKETBALL', 'FISHING'];
@@ -126,7 +116,6 @@ var Search = React.createClass({
   },
   componentWillMount: function() {
     this.loadParksFromServer();
-    // setInterval(this.loadParksFromServer, this.props.pollInterval);
   },
   render: function() {
     return (
@@ -136,7 +125,7 @@ var Search = React.createClass({
             <h1>Find a Venue</h1>
           </div>
         </div>
-        <ParksForm onParkSubmit={this.handleParkSubmit} amenities={this.state.amenities} />
+        <ParksForm onParkSubmit={this.handleParkSearch} amenities={this.state.amenities} />
         <ParksList filteredParks={this.state.filteredParks} />
       </div>
     );
@@ -155,42 +144,4 @@ var Park = React.createClass({
       </li>
     );
   }
-});
-
-$(function() {
-  React.renderComponent(
-    <Search url="parks.json" />,
-    document.getElementById('content')
-  );
-
-  var map;
-
-  map = L.map("map", {
-    zoom: 11,
-    center: [38.042,-84.515],
-    maxZoom: 14,
-    minZoom: 10
-  });
-
-  var basemapTiles = L.tileLayer('http://{s}.tiles.mapbox.com/v3/codeforamerica.i3l4b022/{z}/{x}/{y}.png').addTo(map);
-
-  var parks = L.geoJson(lexParks, {
-    style: function(feature) {
-      return {
-        fillColor: "#18A866",
-        weight: 1,
-        opacity: 0.7,
-        color: "#18A866",
-        fillOpacity: 0.6
-      };
-    },
-    onEachFeature: function(feature, layer) {
-      layer.on('click', function(e) {
-        map.fitBounds(e.target.getBounds());
-      });
-      layer.bindPopup("This is " + feature.properties.PARK_NAME + "!");
-    }
-  })
-  .addTo(map);
-
 });
