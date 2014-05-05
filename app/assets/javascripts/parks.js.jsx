@@ -62,7 +62,7 @@ var ParksList = React.createClass({
           </ol>
         </div>
         <div className="large-8 columns">
-          <img src="http://4.bp.blogspot.com/-O6IR1WmyEd8/UZ-APOBLFFI/AAAAAAAAEfE/lONvEFkWW-Y/s1600/Lexington+KY+Birds+eye.jpg" width="100%" />
+          <div id='map'></div>
         </div>
       </div>
     );
@@ -145,4 +145,11 @@ $(function() {
     <Search url="parks.json" />,
     document.getElementById('content')
   );
+  var map;
+
+  map = L.map("map", {
+    zoom: 14,
+    center: [45.518867, -122.665408]
+  });
+  var basemapTiles = L.tileLayer('http://{s}.tiles.mapbox.com/v3/codeforamerica.i3l4b022/{z}/{x}/{y}.png').addTo(map);
 });
