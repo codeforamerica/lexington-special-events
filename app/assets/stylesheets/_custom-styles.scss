@@ -10,3 +10,13 @@
   overflow: auto;
   height: 500px;
 }
+
+.four-columns {
+  -webkit-column-count:4; /* Chrome, Safari, Opera */
+  -moz-column-count:4; /* Firefox */
+  column-count:4;
+
+  -webkit-column-gap:40px; /* Chrome, Safari, Opera */
+  -moz-column-gap:40px; /* Firefox */
+  column-gap:40px;
+}
