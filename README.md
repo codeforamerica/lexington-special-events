@@ -1,3 +1,8 @@
+## Special Events System for Lexington, KY
+Special Events is a Rails application,
+[here’s](https://github.com/codeforamerica/howto/blob/master/Rails.md)
+how to get Ruby/Rails running on your environment.
+
 ```
 rake db:create
 rake db:migrate
