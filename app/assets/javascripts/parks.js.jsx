@@ -4,16 +4,26 @@
 var ParksForm = React.createClass({
   render: function() {
     var _this = this;
-    var checkboxes = _.map(this.props.amenities, function(amenity) {
+    var checkboxes = _.map(_.range(0, 10), function(amenity) {
+      var amenity = _this.props.amenities[0];
       return (
         <li>
           <label>
-            <input type="checkbox" value={amenity} onChange={_this.handleChange} />
+            <input type="checkbox" value={amenity} onChange={_this.handleAmenityChange} />
             {amenity}
           </label>
         </li>
       );
     });
+
+    var parks = _.map(_.sortBy(this.props.parks, function(park) {
+        return park.properties.NAME;
+      }), function(park) {
+        return (
+          <option>{park.properties.NAME}</option>
+        );
+     });
+
     return (
       <form>
         <div className="row">
@@ -32,14 +42,17 @@ var ParksForm = React.createClass({
           </div>
           <div className="large-4 columns">
             <label>By Name
-              <input type="text" placeholder="Enter Park Name" />
+              <select className="parkName" onChange={_this.handleParkNameChange}>
+                <option value=""> -- </option>
+                {parks}
+              </select>
             </label>
           </div>
         </div>
         <div className="row">
           <div className="columns four-columns">
             <ul className="no-bullet">
-            {checkboxes}
+              {checkboxes}
             </ul>
           </div>
         </div>
@@ -52,11 +65,14 @@ var ParksForm = React.createClass({
       </form>
     );
   },
-  handleChange: function(event) {
+  handleParkNameChange: function(event) {
+    this.props.onParkSearch('Name', event.target.value);
+  },
+  handleAmenityChange: function(event) {
     if (event.target.checked) {
-      this.props.onParkSubmit([event.target.value]);
+      this.props.onParkSearch('Amenity', [event.target.value]);
     } else {
-      this.props.onParkSubmit([]);
+      this.props.onParkSearch('Amenity', []);
     }
   },
 });
@@ -70,7 +86,7 @@ var ParksList = React.createClass({
 
     return (
       <div className="row">
-        <div className="large-4 columns search-results">
+        <div className="large-4 columns">
           <p>Total of <strong>{parkNodes.length}</strong> park{parkNodes.length !== 1 ? 's' : ''}</p>
           <ol>
             {parkNodes}
@@ -84,47 +100,46 @@ var ParksList = React.createClass({
   }
 });
 
-var Search = React.createClass({
-  getInitialState: function() {
-    return {parks: [], filteredParks: [], amenities: []}
+var ParksFilter = {
+  // property 'Foo' becomes filterByFoo(whereValues)
+  filterBy: function(property, parks, whereValues) {
+    return this['filterBy' + property](parks, whereValues);
   },
-  filterParks: function(amenities) {
-    if (amenities.length === 0 ) { return this.state.parks; }
-
-    return _.select(this.state.parks, function(park) {
+  filterByName: function(parks, name) {
+    return _.select(parks, function(park) {
+      return park.properties.NAME === name;
+    });
+  },
+  filterByAmenity: function(parks, amenities) {
+    return _.select(parks, function(park) {
       var filterOn = amenities[0];
       return (park.properties.amenities[filterOn] === 1 ||
         park.properties.amenities[filterOn] === 'Yes');
     });
   },
-  handleParkSubmit: function(amenities) {
-    this.setState({filteredParks: this.filterParks(amenities)});
-  },
-  loadParksFromServer: function() {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      success: function(parks) {
-        this.setParks(parks)
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-  },
-  setParks: function(parksGeo) {
+};
+
+var Search = React.createClass({
+  getInitialState: function() {
     var amenityKeys = ['BASKETBALL', 'FISHING'];
 
-    var parks = _.map(parksGeo.features, function(park) {
+    // we can eliminate this mutation once the server returns more shapely data
+    var parks = _.map(this.props.parks, function(park) {
       park.properties.amenities = _.pick(park.properties, amenityKeys);
       return park;
     });
 
-    this.setState({parks: parks, filteredParks: parks, amenities: amenityKeys});
+    return {parks: parks, filteredParks: parks, amenities: amenityKeys};
   },
-  componentWillMount: function() {
-    this.loadParksFromServer();
-    // setInterval(this.loadParksFromServer, this.props.pollInterval);
+  handleParkSearch: function(searchProperty, whereValues) {
+    var filterdParks;
+    if (!whereValues || whereValues.length === 0) {
+      filteredParks = this.props.parks;
+    } else {
+      filteredParks = ParksFilter.filterBy(searchProperty,
+        this.state.filteredParks, whereValues);
+    }
+    this.setState({filteredParks: filteredParks});
   },
   render: function() {
     return (
@@ -134,7 +149,8 @@ var Search = React.createClass({
             <h1>Find a Venue</h1>
           </div>
         </div>
-        <ParksForm onParkSubmit={this.handleParkSubmit} amenities={this.state.amenities} />
+        <ParksForm onParkSearch={this.handleParkSearch} amenities={this.state.amenities}
+          parks={this.state.parks} />
         <ParksList filteredParks={this.state.filteredParks} />
       </div>
     );
@@ -153,42 +169,4 @@ var Park = React.createClass({
       </li>
     );
   }
-});
-
-$(function() {
-  React.renderComponent(
-    <Search url="parks.json" />,
-    document.getElementById('content')
-  );
-  
-  var map;
-
-  map = L.map("map", {
-    zoom: 11,
-    center: [38.042,-84.515],
-    maxZoom: 14,
-    minZoom: 10
-  });
-
-  var basemapTiles = L.tileLayer('http://{s}.tiles.mapbox.com/v3/codeforamerica.i3l4b022/{z}/{x}/{y}.png').addTo(map);
-
-  var parks = L.geoJson(lexParks, {
-    style: function(feature) {
-      return {
-        fillColor: "#18A866",
-        weight: 1,
-        opacity: 0.7,
-        color: "#18A866",
-        fillOpacity: 0.6
-      };
-    },
-    onEachFeature: function(feature, layer) {
-      layer.on('click', function(e) {
-        map.fitBounds(e.target.getBounds());
-      });
-      layer.bindPopup("This is " + feature.properties.PARK_NAME + "!");
-    }
-  })
-  .addTo(map);
-
 });

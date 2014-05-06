@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/reactjs/react-rails.git
+  revision: c09a0c6522301db7cb2bcea6673aa349298847f2
+  specs:
+    react-rails (1.0.0.pre)
+      connection_pool
+      execjs
+      rails (>= 3.1)
+      react-source (= 0.9.0)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -30,33 +40,47 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     builder (3.2.2)
+    capybara (2.2.1)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
+    childprocess (0.5.3)
+      ffi (~> 1.0, >= 1.0.11)
+    columnize (0.8.9)
+    connection_pool (2.0.0)
+    debugger (1.6.6)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.3.2)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.3.2)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
+    ffi (1.9.3)
     foundation-rails (5.2.2.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
     hike (1.2.3)
     i18n (0.6.9)
-    jasmine-core (2.0.0)
-    jasmine-rails (0.7.1)
-      jasmine-core (>= 1.3, < 3.0)
-      phantomjs
-      rails (>= 3.1.0)
-      sprockets-rails
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     leaflet-rails (0.7.2)
+    libv8 (3.16.14.3)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
+    mini_portile (0.5.3)
     minitest (5.3.3)
     multi_json (1.9.3)
+    nokogiri (1.6.1)
+      mini_portile (~> 0.5.0)
     pg (0.17.1)
-    phantomjs (1.9.7.0)
     polyglot (0.3.4)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -71,6 +95,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.0)
       sprockets-rails (~> 2.0)
+    rails-assets-es5-shim (3.0.2)
     rails-assets-lodash (2.4.1)
     rails_12factor (0.0.2)
       rails_serve_static_assets
@@ -83,11 +108,8 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.3.1)
-    react-rails (0.10.0.0)
-      execjs
-      rails (>= 3.1)
-      react-source (= 0.10.0)
-    react-source (0.10.0)
+    react-source (0.9.0)
+    ref (1.0.5)
     rspec-core (2.14.8)
     rspec-expectations (2.14.5)
       diff-lcs (>= 1.1.3, < 2.0)
@@ -100,13 +122,21 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
+    rubyzip (1.1.3)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
+    selenium-webdriver (2.41.0)
+      childprocess (>= 0.5.0)
+      multi_json (~> 1.0)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0.4)
     spring (1.1.2)
+    spring-commands-rspec (1.0.2)
+      spring (>= 0.9.1)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -116,6 +146,11 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    teaspoon (0.8.0)
+      railties (>= 3.2.5, < 5)
+    therubyracer (0.12.1)
+      libv8 (~> 3.16.14.0)
+      ref
     thor (0.19.1)
     thread_safe (0.3.3)
     tilt (1.4.1)
@@ -127,21 +162,30 @@ GEM
     uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    websocket (1.0.7)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  capybara
+  debugger
   foundation-rails
-  jasmine-rails
   jquery-rails
   leaflet-rails
   pg
   rails (= 4.1.0)
+  rails-assets-es5-shim
   rails-assets-lodash
   rails_12factor
-  react-rails
+  react-rails (= 1.0.0.pre)!
   rspec-rails
   sass-rails (~> 4.0.3)
+  selenium-webdriver
   spring
+  spring-commands-rspec
+  teaspoon
+  therubyracer
   uglifier (>= 1.3.0)
