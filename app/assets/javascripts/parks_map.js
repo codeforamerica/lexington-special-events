@@ -1,4 +1,6 @@
 $(function() {
+  $('.parkName').select2();
+
   var map;
 
   map = L.map("map", {

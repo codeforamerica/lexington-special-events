@@ -16,6 +16,7 @@
 //= require react_ujs
 //= require lodash
 //= require leaflet
+//= require select2
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

@@ -15,6 +15,13 @@ var ParksForm = React.createClass({
         </li>
       );
     });
+
+    var parks = _.map(this.props.parks, function(park) {
+      return (
+        <option>{park.properties.NAME}</option>
+      );
+    });
+
     return (
       <form>
         <div className="row">
@@ -33,7 +40,9 @@ var ParksForm = React.createClass({
           </div>
           <div className="large-4 columns">
             <label>By Name
-              <input type="text" placeholder="Enter Park Name" />
+              <select className="parkName">
+                {parks}
+              </select>
             </label>
           </div>
         </div>
@@ -125,7 +134,8 @@ var Search = React.createClass({
             <h1>Find a Venue</h1>
           </div>
         </div>
-        <ParksForm onParkSubmit={this.handleParkSearch} amenities={this.state.amenities} />
+        <ParksForm onParkSubmit={this.handleParkSearch} amenities={this.state.amenities}
+          parks={this.state.parks} />
         <ParksList filteredParks={this.state.filteredParks} />
       </div>
     );
