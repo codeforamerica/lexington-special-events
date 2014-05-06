@@ -16,11 +16,13 @@ var ParksForm = React.createClass({
       );
     });
 
-    var parks = _.map(this.props.parks, function(park) {
-      return (
-        <option>{park.properties.NAME}</option>
-      );
-    });
+    var parks = _.map(_.sortBy(this.props.parks, function(park) {
+        return park.properties.NAME;
+      }), function(park) {
+        return (
+          <option>{park.properties.NAME}</option>
+        );
+     });
 
     return (
       <form>
