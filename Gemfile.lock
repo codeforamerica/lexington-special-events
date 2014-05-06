@@ -96,10 +96,7 @@ GEM
       railties (= 4.1.0)
       sprockets-rails (~> 2.0)
     rails-assets-es5-shim (3.0.2)
-    rails-assets-jquery (2.1.1)
     rails-assets-lodash (2.4.1)
-    rails-assets-select2 (3.4.8)
-      rails-assets-jquery (>= 1.7.1)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
@@ -182,7 +179,6 @@ DEPENDENCIES
   rails (= 4.1.0)
   rails-assets-es5-shim
   rails-assets-lodash
-  rails-assets-select2
   rails_12factor
   react-rails (= 1.0.0.pre)!
   rspec-rails

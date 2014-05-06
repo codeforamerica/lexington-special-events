@@ -1,7 +1,4 @@
 $(function() {
-  // select2 breaks react
-  // $('.parkName').select2();
-
   var map;
 
   map = L.map("map", {
