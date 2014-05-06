@@ -50,7 +50,7 @@ var ParksForm = React.createClass({
           </div>
         </div>
         <div className="row">
-          <div className="large-4 columns">
+          <div className="columns four-columns">
             <ul className="no-bullet">
               {checkboxes}
             </ul>
@@ -145,7 +145,7 @@ var Search = React.createClass({
     return (
       <div>
         <div className="row">
-          <div className="four-columns columns">
+          <div className="large-4 columns">
             <h1>Find a Venue</h1>
           </div>
         </div>
