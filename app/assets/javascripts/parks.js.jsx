@@ -145,7 +145,7 @@ var Search = React.createClass({
     return (
       <div>
         <div className="row">
-          <div className="large-4 columns">
+          <div className="four-columns columns">
             <h1>Find a Venue</h1>
           </div>
         </div>
