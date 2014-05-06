@@ -9,7 +9,7 @@ var ParksForm = React.createClass({
       return (
         <li>
           <label>
-            <input type="checkbox" value={amenity} onChange={_this.handleChange} />
+            <input type="checkbox" value={amenity} onChange={_this.handleAmenityChange} />
             {amenity}
           </label>
         </li>
@@ -42,7 +42,8 @@ var ParksForm = React.createClass({
           </div>
           <div className="large-4 columns">
             <label>By Name
-              <select className="parkName">
+              <select className="parkName" onChange={_this.handleParkNameChange}>
+                <option value=""> -- </option>
                 {parks}
               </select>
             </label>
@@ -64,11 +65,14 @@ var ParksForm = React.createClass({
       </form>
     );
   },
-  handleChange: function(event) {
+  handleParkNameChange: function(event) {
+    this.props.onParkSearch('Name', event.target.value);
+  },
+  handleAmenityChange: function(event) {
     if (event.target.checked) {
-      this.props.onParkSubmit([event.target.value]);
+      this.props.onParkSearch('Amenity', [event.target.value]);
     } else {
-      this.props.onParkSubmit([]);
+      this.props.onParkSearch('Amenity', []);
     }
   },
 });
@@ -96,37 +100,46 @@ var ParksList = React.createClass({
   }
 });
 
-var Search = React.createClass({
-  getInitialState: function() {
-    return {parks: [], filteredParks: [], amenities: []}
+var ParksFilter = {
+  // property 'Foo' becomes filterByFoo(whereValues)
+  filterBy: function(parks, property, whereValues) {
+    return this['filterBy' + property](parks, whereValues);
   },
-  filterParks: function(amenities) {
-    if (amenities.length === 0 ) { return this.state.parks; }
-
-    return _.select(this.state.parks, function(park) {
+  filterByName: function(parks, name) {
+    return _.select(parks, function(park) {
+      return park.properties.NAME === name;
+    });
+  },
+  filterByAmenity: function(parks, amenities) {
+    return _.select(parks, function(park) {
       var filterOn = amenities[0];
       return (park.properties.amenities[filterOn] === 1 ||
         park.properties.amenities[filterOn] === 'Yes');
     });
   },
-  handleParkSearch: function(amenities) {
-    this.setState({filteredParks: this.filterParks(amenities)});
-  },
-  loadParksFromServer: function() {
-    this.setParks(this.props.parks);
-  },
-  setParks: function(parks) {
+};
+
+var Search = React.createClass({
+  getInitialState: function() {
     var amenityKeys = ['BASKETBALL', 'FISHING'];
 
-    var parks = _.map(parks, function(park) {
+    // we can eliminate this mutation once the server returns more shapely data
+    var parks = _.map(this.props.parks, function(park) {
       park.properties.amenities = _.pick(park.properties, amenityKeys);
       return park;
     });
 
-    this.setState({parks: parks, filteredParks: parks, amenities: amenityKeys});
+    return {parks: parks, filteredParks: parks, amenities: amenityKeys};
   },
-  componentWillMount: function() {
-    this.loadParksFromServer();
+  handleParkSearch: function(searchProperty, whereValues) {
+    var filterdParks;
+    if (!whereValues || whereValues.length === 0) {
+      filteredParks = this.props.parks;
+    } else {
+      filteredParks = ParksFilter.filterBy(this.state.filteredParks,
+       searchProperty, whereValues);
+    }
+    this.setState({filteredParks: filteredParks});
   },
   render: function() {
     return (
@@ -136,7 +149,7 @@ var Search = React.createClass({
             <h1>Find a Venue</h1>
           </div>
         </div>
-        <ParksForm onParkSubmit={this.handleParkSearch} amenities={this.state.amenities}
+        <ParksForm onParkSearch={this.handleParkSearch} amenities={this.state.amenities}
           parks={this.state.parks} />
         <ParksList filteredParks={this.state.filteredParks} />
       </div>

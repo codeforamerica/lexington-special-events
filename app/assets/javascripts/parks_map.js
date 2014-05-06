@@ -1,5 +1,6 @@
 $(function() {
-  $('.parkName').select2();
+  // select2 breaks react
+  // $('.parkName').select2();
 
   var map;
 
