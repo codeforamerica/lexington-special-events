@@ -19,7 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 
 group :test, :development do
   gem 'debugger'
-  gem 'jasmine-rails'
+  gem 'teaspoon'
 end
 
 group :test do
