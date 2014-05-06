@@ -113,12 +113,12 @@ var Search = React.createClass({
     this.setState({filteredParks: this.filterParks(amenities)});
   },
   loadParksFromServer: function() {
-    this.setParks(theParks);
+    this.setParks(this.props.parks);
   },
-  setParks: function(parksGeo) {
+  setParks: function(parks) {
     var amenityKeys = ['BASKETBALL', 'FISHING'];
 
-    var parks = _.map(parksGeo.features, function(park) {
+    var parks = _.map(parks, function(park) {
       park.properties.amenities = _.pick(park.properties, amenityKeys);
       return park;
     });
