@@ -165,8 +165,8 @@ $(function() {
 
   var amenities = {
     "AMPHITHEAT": "Amphitheater",
-    "BASKETBALL": "Basketball Court",
-    "HARDCOURT": "Hardcourt",
+    "BASKETBALL": "Basketball Courts",
+    "HARDCOURT": "Hardcourts",
     "BOAT": "Boats",
     "DAY_CAMP": "Day Camp",
     "DISC_GOLF": "Disc Golf Course",
@@ -202,12 +202,17 @@ $(function() {
     var park = feature.properties;
     var popupText = '<strong>' + park.PARK_NAME + '</strong><br><em>' + park.ADDRESS_1 + '</em>';
     for (var amenity in park) {
-      if (park.hasOwnProperty(amenity)) {
-        if ((park[amenity] == "Yes" || park[amenity] > 0) && amenities[amenity]) {
-          console.log(amenity);
+      if (park.hasOwnProperty(amenity) && amenities[amenity]) {
+        if (park[amenity] == "Yes") {
           popupText += "<br>- " + amenities[amenity];
-        };
-      };
+        }
+        else if (park[amenity] > 0 && (amenity == "PAVED_TRAI" || amenity == "UNPVD_TRLS")) {
+          popupText += "<br>- " + park[amenity] + " miles of " + amenities[amenity];
+        }
+        else if (park[amenity] > 0 && amenities[amenity]) {
+          popupText += "<br>- " + park[amenity] + " " + amenities[amenity];
+        }
+      }
     };
     return popupText;
   };
