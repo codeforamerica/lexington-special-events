@@ -102,7 +102,7 @@ var ParksList = React.createClass({
 
 var ParksFilter = {
   // property 'Foo' becomes filterByFoo(whereValues)
-  filterBy: function(parks, property, whereValues) {
+  filterBy: function(property, parks, whereValues) {
     return this['filterBy' + property](parks, whereValues);
   },
   filterByName: function(parks, name) {
@@ -136,8 +136,8 @@ var Search = React.createClass({
     if (!whereValues || whereValues.length === 0) {
       filteredParks = this.props.parks;
     } else {
-      filteredParks = ParksFilter.filterBy(this.state.filteredParks,
-       searchProperty, whereValues);
+      filteredParks = ParksFilter.filterBy(searchProperty,
+        this.state.filteredParks, whereValues);
     }
     this.setState({filteredParks: filteredParks});
   },
