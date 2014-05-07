@@ -41,6 +41,10 @@
     </div>
 
     <%= yield %>
+    <!--[if IE 8]>
+      <%= javascript_include_tag "polyfills-ie8" %>
+    <![endif]-->
+
     <%= javascript_include_tag "application" %>
   </body>
 </html>
