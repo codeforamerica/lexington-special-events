@@ -26,4 +26,4 @@ $ heroku open
 
 #### Front-end Assets
 * Are mostly managed by [rails-assets](https://rails-assets.org/) which is a bridge to bower
-* To install some fancy JS library, add `gem 'rails-asses-fancy-js-library'` to the Gemfile
+* To install some fancy JS library, add `gem 'rails-assets-fancy-js-library'` to the Gemfile
