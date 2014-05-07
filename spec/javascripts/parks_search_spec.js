@@ -1,9 +1,9 @@
 describe('User search', function() {
   it('filters parks by amenity', function() {
-    var basketball = {name: 'foo', amenities: {BASKETBALL: 1}}
-    var other = {name: 'bar', amenities: []};
-    var filtered = ParksFilter.filterByAmenity([basketball, other], ['BASKETBALL']);
-    expect(filtered).toEqual([basketball]);
+    var bball = {name: 'foo', amenities: [{name: 'bball'}]}
+    var other = {name: 'bar', amenities: [{name: 'fishing'}]};
+    var filtered = ParksFilter.filterByAmenity([bball, other], ['bball']);
+    expect(filtered).toEqual([bball]);
   });
 
   it('filters parks by name', function() {
@@ -14,14 +14,14 @@ describe('User search', function() {
   });
 
   it('filters by amenity and name', function() {
-    var foo = {name: 'foo', amenities: {BASKETBALL: 1}};
-    var bar = {name: 'bar', amenities: {BASKETBALL: 1}};
-    var baz = {name: 'baz', amenities: {}};
+    var foo = {name: 'foo', amenities: [{name: 'bball'}]};
+    var bar = {name: 'bar', amenities: [{name: 'bball'}]};
+    var baz = {name: 'baz', amenities: []};
 
-    var filters = {Amenity: ['BASKETBALL']}
+    var filters = {Amenity: ['bball']}
     expect(ParksFilter.filter([foo, bar, baz], filters)).toEqual([foo, bar]);
 
-    filters = {Amenity: ['BASKETBALL'], Name: 'foo'}
+    filters = {Amenity: ['bball'], Name: 'foo'}
     expect(ParksFilter.filter([foo, bar, baz], filters)).toEqual([foo]);
   });
 
@@ -42,16 +42,16 @@ describe('User search', function() {
 
   it('unfilters when whereValues empty', function() {
     fixture.set('<div id="content"></div>');
-    var basketball = {name: 'foo', amenities: {BASKETBALL: 1}};
-    var other = {name: 'bar', amenities: {}};
+    var bball = {name: 'foo', amenities: [{name: 'bball'}]};
+    var other = {name: 'bar', amenities: []};
     var search = React.renderComponent(
-      Search({parks: [basketball, other]}),
+      Search({parks: [bball, other]}),
       document.getElementById('content')
     );
-    search.handleParkSearch('Amenity', ['BASKETBALL'])
-    expect(search.state.filteredParks).toEqual([basketball]);
+    search.handleParkSearch('Amenity', ['bball'])
+    expect(search.state.filteredParks).toEqual([bball]);
 
     search.handleParkSearch('Amenity', [])
-    expect(search.state.filteredParks).toEqual([basketball, other]);
+    expect(search.state.filteredParks).toEqual([bball, other]);
   });
 });

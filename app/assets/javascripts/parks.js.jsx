@@ -120,20 +120,21 @@ var ParksFilter = {
   filterByAmenity: function(parks, amenities) {
     return _.select(parks, function(park) {
       var filterOn = amenities[0];
-      return (park.amenities[filterOn] === 1 ||
-        park.amenities[filterOn] === 'Yes');
+      return (_.find(park.amenities, function(amenity) {
+        return amenity.name === filterOn;
+      }));
     });
   },
 };
 
 var Search = React.createClass({
   getInitialState: function() {
-    var amenityKeys = _.map(this.props.amenities, function(a) {
+    var amenityNames = _.map(this.props.amenities, function(a) {
       return a.name;
     });
     return {filters: {Name: [], Amenity: []},
       filteredParks: this.props.parks,
-      amenities: amenityKeys};
+      amenities: amenityNames};
   },
   handleParkSearch: function(searchProperty, whereValues) {
     var filters = _.clone(this.state.filters);
