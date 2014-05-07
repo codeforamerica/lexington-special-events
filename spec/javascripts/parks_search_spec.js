@@ -13,6 +13,33 @@ describe('User search', function() {
     expect(filtered).toEqual([cheapside]);
   });
 
+  it('filters by amenity and name', function() {
+    var foo = {properties: {NAME: 'foo', amenities: {BASKETBALL: 1}}};
+    var bar = {properties: {NAME: 'bar', amenities: {BASKETBALL: 1}}};
+    var baz = {properties: {NAME: 'baz', amenities: {}}};
+
+    var filters = {Amenity: ['BASKETBALL']}
+    expect(ParksFilter.filter([foo, bar, baz], filters)).toEqual([foo, bar]);
+
+    filters = {Amenity: ['BASKETBALL'], Name: 'foo'}
+    expect(ParksFilter.filter([foo, bar, baz], filters)).toEqual([foo]);
+  });
+
+  it('updates name filter when name changes', function() {
+    fixture.set('<div id="content"></div>');
+    var foo = {properties: {NAME: 'foo'}}
+    var bar = {properties: {NAME: 'bar'}};
+    var search = React.renderComponent(
+      Search({parks: [foo, bar]}),
+      document.getElementById('content')
+    );
+    search.handleParkSearch('Name', 'foo')
+    expect(search.state.filteredParks).toEqual([foo]);
+
+    search.handleParkSearch('Name', 'bar')
+    expect(search.state.filteredParks).toEqual([bar]);
+  });
+
   it('unfilters when whereValues empty', function() {
     fixture.set('<div id="content"></div>');
     var basketball = {properties: {NAME: 'foo', BASKETBALL: 1}}

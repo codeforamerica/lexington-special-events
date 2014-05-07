@@ -101,8 +101,18 @@ var ParksList = React.createClass({
 });
 
 var ParksFilter = {
+  filter: function(parks, filters) {
+    var _this = this;
+    var filtered = _.clone(parks);
+    _.each(filters, function(values, name) {
+      filtered = _this.filterBy(name, filtered, values);
+    });
+    return filtered;
+  },
   // property 'Foo' becomes filterByFoo(whereValues)
   filterBy: function(property, parks, whereValues) {
+    if (!whereValues || whereValues.length === 0) { return parks }
+
     return this['filterBy' + property](parks, whereValues);
   },
   filterByName: function(parks, name) {
@@ -129,17 +139,17 @@ var Search = React.createClass({
       return park;
     });
 
-    return {parks: parks, filteredParks: parks, amenities: amenityKeys};
+    return {parks: parks,
+      filters: {Name: [], Amenity: []},
+      filteredParks: parks,
+      amenities: amenityKeys};
   },
   handleParkSearch: function(searchProperty, whereValues) {
-    var filterdParks;
-    if (!whereValues || whereValues.length === 0) {
-      filteredParks = this.props.parks;
-    } else {
-      filteredParks = ParksFilter.filterBy(searchProperty,
-        this.state.filteredParks, whereValues);
-    }
-    this.setState({filteredParks: filteredParks});
+    var filters = _.clone(this.state.filters);
+    filters[searchProperty] = whereValues;
+    this.setState({filters: filters});
+    // pass filters instead of this.state.filters. The latter may not take yet
+    this.setState({filteredParks: ParksFilter.filter(this.props.parks, filters)});
   },
   render: function() {
     return (
