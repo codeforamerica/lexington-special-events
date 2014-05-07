@@ -4,8 +4,7 @@
 var ParksForm = React.createClass({
   render: function() {
     var _this = this;
-    var checkboxes = _.map(_.range(0, 10), function(amenity) {
-      var amenity = _this.props.amenities[0];
+    var checkboxes = _.map(this.props.amenities, function(amenity) {
       return (
         <li>
           <label>
@@ -129,8 +128,9 @@ var ParksFilter = {
 
 var Search = React.createClass({
   getInitialState: function() {
-    var amenityKeys = ['BASKETBALL', 'FISHING'];
-
+    var amenityKeys = _.map(this.props.amenities, function(a) {
+      return a.name;
+    });
     return {filters: {Name: [], Amenity: []},
       filteredParks: this.props.parks,
       amenities: amenityKeys};
