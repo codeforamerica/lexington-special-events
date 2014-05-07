@@ -27,25 +27,18 @@ var ParksForm = React.createClass({
     return (
       <form>
         <div className="row">
-          <div className="large-4 columns">
-            <label>By Amenity
-              <select>
-                <option value="show-amenities">Show Amenities</option>
-                <option value="hide-amenities">Hide Amenities</option>
-              </select>
+          <div className="large-5 columns">
+            <label>Keyword <a>(Show Filters)</a>
+              <input type="text" placeholder="Beaumont Park, baseball, dog park" />
             </label>
           </div>
-          <div className="large-4 columns">
-            <label>By Zip Code
-              <input type="text" placeholder="Enter Zip Code" />
+          <div className="large-5 columns">
+            <label>Location
+              <input type="text" placeholder="City or Zip Code" value="Lexington, KY" disabled />
             </label>
           </div>
-          <div className="large-4 columns">
-            <label>By Name
-              <ReactSelect2 defaultValue="" onChange={_this.handleParkNameChange}>
-                {parks}
-              </ReactSelect2>
-            </label>
+          <div className="large-2 columns">
+            <a href="#" className="button radius expand search-button">Search</a>
           </div>
         </div>
         <div className="row">
@@ -53,11 +46,6 @@ var ParksForm = React.createClass({
             <ul className="no-bullet">
               {checkboxes}
             </ul>
-          </div>
-        </div>
-        <div className="row">
-          <div className="large-4 columns">
-            <a href="#" className="button radius expand">Search</a>
           </div>
           <hr />
         </div>
@@ -85,7 +73,7 @@ var ParksList = React.createClass({
 
     return (
       <div className="row">
-        <div className="large-4 columns">
+        <div className="large-4 columns search-results">
           <p>Total of <strong>{parkNodes.length}</strong> park{parkNodes.length !== 1 ? 's' : ''}</p>
           <ol>
             {parkNodes}
@@ -154,12 +142,15 @@ var Search = React.createClass({
     return (
       <div>
         <div className="row">
-          <div className="large-4 columns">
-            <h1>Find a Venue</h1>
+          <div className="row">
+            <div className="large-4 columns">
+              <h1>Find a Park</h1>
+            </div>
           </div>
-        </div>
-        <ParksForm onParkSearch={this.handleParkSearch} amenities={this.state.amenities}
+        
+          <ParksForm onParkSearch={this.handleParkSearch} amenities={this.state.amenities}
           parks={this.state.parks} />
+        </div>
         <ParksList filteredParks={this.state.filteredParks} />
       </div>
     );

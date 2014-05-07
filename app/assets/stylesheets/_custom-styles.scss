@@ -3,12 +3,12 @@
 }
 
 #map {
-  height: 400px;
+  height: rem-calc(500);
 }
 
 .search-results {
   overflow: auto;
-  height: 500px;
+  height: rem-calc(500);
 }
 
 .four-columns {
@@ -16,9 +16,14 @@
   -moz-column-count:4; /* Firefox */
   column-count:4;
 
-  -webkit-column-gap:40px; /* Chrome, Safari, Opera */
-  -moz-column-gap:40px; /* Firefox */
-  column-gap:40px;
+  -webkit-column-gap:rem-calc(40); /* Chrome, Safari, Opera */
+  -moz-column-gap:rem-calc(40); /* Firefox */
+  column-gap:rem-calc(40);
+}
+
+.search-button {
+  padding: rem-calc(10);
+  margin-top: rem-calc(20);
 }
 
 input[type='checkbox'] {
