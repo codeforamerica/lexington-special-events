@@ -42,10 +42,9 @@ var ParksForm = React.createClass({
           </div>
           <div className="large-4 columns">
             <label>By Name
-              <select className="parkName" onChange={_this.handleParkNameChange}>
-                <option value=""> -- </option>
+              <ReactSelect2 defaultValue="" onChange={_this.handleParkNameChange}>
                 {parks}
-              </select>
+              </ReactSelect2>
             </label>
           </div>
         </div>
