@@ -4,12 +4,10 @@ class ParksController < ApplicationController
   def index
     @parks = Park.all.includes(:amenities).map do |p|
       {
-        properties:
-        {
-          'PARK_NAME' => p.name,
-          'NAME' => p.name,
+        :name => p.name,
+        :amenities => {
           'BASKETBALL' => p.amenities.count
-        }
+        },
       }
     end
     respond_to do |format|

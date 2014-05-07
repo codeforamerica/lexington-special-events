@@ -17,11 +17,9 @@ var ParksForm = React.createClass({
     });
 
     var parks = _.map(_.sortBy(this.props.parks, function(park) {
-        return park.properties.NAME;
+        return park.name;
       }), function(park) {
-        return (
-          <option>{park.properties.NAME}</option>
-        );
+        return <option>{park.name}</option>;
      });
 
     return (
@@ -80,8 +78,8 @@ var ParksForm = React.createClass({
 var ParksList = React.createClass({
   render: function() {
     var parkNodes = _.map(this.props.filteredParks, function (park) {
-      var amenities = park.properties.amenities;
-      return <Park name={park.properties['PARK_NAME']} amenities={amenities} />
+      var amenities = park.amenities;
+      return <Park name={park.name} amenities={amenities} />
     });
 
     return (
@@ -117,14 +115,14 @@ var ParksFilter = {
   },
   filterByName: function(parks, name) {
     return _.select(parks, function(park) {
-      return park.properties.NAME === name;
+      return park.name === name;
     });
   },
   filterByAmenity: function(parks, amenities) {
     return _.select(parks, function(park) {
       var filterOn = amenities[0];
-      return (park.properties.amenities[filterOn] === 1 ||
-        park.properties.amenities[filterOn] === 'Yes');
+      return (park.amenities[filterOn] === 1 ||
+        park.amenities[filterOn] === 'Yes');
     });
   },
 };
@@ -133,15 +131,8 @@ var Search = React.createClass({
   getInitialState: function() {
     var amenityKeys = ['BASKETBALL', 'FISHING'];
 
-    // we can eliminate this mutation once the server returns more shapely data
-    var parks = _.map(this.props.parks, function(park) {
-      park.properties.amenities = _.pick(park.properties, amenityKeys);
-      return park;
-    });
-
-    return {parks: parks,
-      filters: {Name: [], Amenity: []},
-      filteredParks: parks,
+    return {filters: {Name: [], Amenity: []},
+      filteredParks: this.props.parks,
       amenities: amenityKeys};
   },
   handleParkSearch: function(searchProperty, whereValues) {
@@ -160,7 +151,7 @@ var Search = React.createClass({
           </div>
         </div>
         <ParksForm onParkSearch={this.handleParkSearch} amenities={this.state.amenities}
-          parks={this.state.parks} />
+          parks={this.props.parks} />
         <ParksList filteredParks={this.state.filteredParks} />
       </div>
     );
