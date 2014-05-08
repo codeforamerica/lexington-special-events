@@ -2,8 +2,13 @@ class ParksController < ApplicationController
   layout 'application'
 
   def index
-    @parks_geo = JSON.parse(File.read('public/data/lexparks.json'))
-    @parks = @parks_geo['features'].map { |p| p.select { |key,_| key == 'properties' } }
+    @parks = Park.all.includes(:amenities).order(:name).map do |p|
+      {
+        :name => p.name,
+        :amenities => p.amenities.map { |a| {name: a.name} },
+      }
+    end
+    @amenities = Amenity.order(:name).all
     respond_to do |format|
       format.html { }
       format.json { render json: @parks }
