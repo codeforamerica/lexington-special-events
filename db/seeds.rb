@@ -41,7 +41,7 @@ amenities.each do |key, amenity|
   amenities[key] = Amenity.create(:name => amenity)
 end
 
-parks_geo = JSON.parse(File.read('./public/data/lexparks.json'))
+parks_geo = JSON.parse(File.read('./public/data/lex_parks.geojson'))
 parks = parks_geo['features'].map { |p| p.select { |key,_| key == 'properties' } }
 
 parks.each do |park_from_json|
