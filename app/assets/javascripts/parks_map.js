@@ -70,7 +70,7 @@ $(function() {
     minZoom: 10
   });
 
-  var basemapTiles = L.tileLayer('http://{s}.tiles.mapbox.com/v3/codeforamerica.i3l4b022/{z}/{x}/{y}.png').addTo(map);
+  var basemapTiles = L.tileLayer('http://{s}.tiles.mapbox.com/v3/codeforamerica.i6fijbde/{z}/{x}/{y}.png').addTo(map);
 
   var parks = L.geoJson(lexParks, {
     style: function(feature) {
