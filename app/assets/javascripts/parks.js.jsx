@@ -83,14 +83,14 @@ var ParksList = React.createClass({
 
     return (
       <div className="row">
-        <div className="large-4 columns">
+        <div className="large-7 columns search-results-container">
           <p>Total of <strong>{parkNodes.length}</strong> park{
             parkNodes.length !== 1 ? 's' : ''}</p>
           <ol>
             {parkNodes}
           </ol>
         </div>
-        <div className="large-8 columns">
+        <div className="large-5 columns">
           <div id="map"></div>
         </div>
       </div>
@@ -147,7 +147,7 @@ var Search = React.createClass({
   },
   render: function() {
     return (
-      <div>
+      <div id="search-content">
         <div className="row">
           <div className="large-4 columns">
             <h1>Find a Venue</h1>
@@ -165,9 +165,18 @@ var Park = React.createClass({
   render: function() {
     // this.props.amenities also exists
     return (
-      <li>
-        <h4><a href="">{this.props.name}</a></h4>
-      </li>
+      <div className="row search-result">
+        <div className="large-4 columns">
+          <img src="http://artandarts.com/images/clip_art/nature/landscapes/landscape_art_city_park.JPG"  height="100px" />
+        </div>
+        <div className="large-8 columns">
+          <li>
+            <h4><a href="">{this.props.name}</a></h4>
+            <p>Address details</p>
+            <p>Upcoming Events</p>
+          </li>
+        </div>
+      </div>
     );
   }
 });
