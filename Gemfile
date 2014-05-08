@@ -5,7 +5,7 @@ gem 'jquery-rails'
 gem 'foundation-rails'
 gem 'leaflet-rails'
 gem 'pg'
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.1'
 gem 'rails_12factor', group: :production
 gem 'rails-assets-lodash'
 gem 'rails-assets-es5-shim'
@@ -24,6 +24,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'database_cleaner'
   gem 'selenium-webdriver'
   gem 'spring-commands-rspec'
 end
