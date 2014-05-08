@@ -1,14 +1,33 @@
+#content {
+  width: rem-calc(1000);
+  background-color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: rem-calc(20);
+  padding-right: rem-calc(20);
+  border: 1px solid rgba(0,0,0,0.10);
+  border-top: none;
+}
+
+#map {
+  height: 375px;
+}
+
 .border-bottom {
   border-bottom: 1px solid rgba(0,0,0,0.10);
 }
 
-#map {
-  height: 400px;
+.search-results-container {
+  overflow: auto;
+  height: 600px;
 }
 
-.search-results {
-  overflow: auto;
-  height: 500px;
+.search-result {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.10);
+  p {
+    margin-bottom: 0;
+  }
 }
 
 .four-columns {
