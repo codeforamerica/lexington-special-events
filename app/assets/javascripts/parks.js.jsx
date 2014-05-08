@@ -84,7 +84,8 @@ var ParksList = React.createClass({
     return (
       <div className="row">
         <div className="large-4 columns">
-          <p>Total of <strong>{parkNodes.length}</strong> park{parkNodes.length !== 1 ? 's' : ''}</p>
+          <p>Total of <strong>{parkNodes.length}</strong> park{
+            parkNodes.length !== 1 ? 's' : ''}</p>
           <ol>
             {parkNodes}
           </ol>
@@ -118,8 +119,9 @@ var ParksFilter = {
     });
   },
   filterByAmenity: function(parks, amenities) {
+    // only apply first amenity filter. Cumulate in later story
+    var filterOn = amenities[0];
     return _.select(parks, function(park) {
-      var filterOn = amenities[0];
       return (_.find(park.amenities, function(amenity) {
         return amenity.name === filterOn;
       }));
@@ -161,13 +163,10 @@ var Search = React.createClass({
 
 var Park = React.createClass({
   render: function() {
-    var amenities = _.map(this.props.amenities, function(amenityVal, amenity) {
-      return (<p>{amenity}: {amenityVal}</p>);
-    });
+    // this.props.amenities also exists
     return (
       <li>
         <h4><a href="">{this.props.name}</a></h4>
-        {amenities}
       </li>
     );
   }

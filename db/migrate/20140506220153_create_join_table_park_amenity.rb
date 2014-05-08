@@ -3,6 +3,7 @@ class CreateJoinTableParkAmenity < ActiveRecord::Migration
     create_table :park_amenities do |t|
       t.belongs_to :park
       t.belongs_to :amenity
+      t.integer :quantity
       t.index [:park_id, :amenity_id]
       t.index [:amenity_id, :park_id]
     end

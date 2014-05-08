@@ -1,4 +1,5 @@
 Park.delete_all
+ParkAmenity.delete_all
 Amenity.delete_all
 
 amenities = {
@@ -44,12 +45,16 @@ parks_geo = JSON.parse(File.read('./public/data/lexparks.json'))
 parks = parks_geo['features'].map { |p| p.select { |key,_| key == 'properties' } }
 
 parks.each do |park_from_json|
-  park = Park.create(:name => park_from_json['properties']['PARK_NAME'])
+  park = Park.create(:name => park_from_json['properties']['PARK_NAME'] ||
+    park_from_json['properties']['NAME'])
   amenities.each do |key, amenity|
-    if (key == 'BASKETBALL' && park_from_json['properties'][key] === 1)
-      p park.name
-      puts 'BASKETBALL!'
-      park.amenities << amenities["BASKETBALL"]
+    value = park_from_json['properties'][key]
+    if (value && value != 'No' && value != 0)
+      pa = ParkAmenity.new(amenity: amenities[key])
+      pa.quanity = value if (value =~ /\d+/)
+      pa.save!
+      park.park_amenities << pa
+      p "#{value} \t creating #{park.name} #{key}"
     end
   end
 end
