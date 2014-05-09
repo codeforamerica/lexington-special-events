@@ -28,13 +28,12 @@ var ParksForm = React.createClass({
             <label>By Amenity
               <select>
                 <option value="show-amenities">Show Amenities</option>
-                <option value="hide-amenities">Hide Amenities</option>
               </select>
             </label>
           </div>
           <div className="large-4 columns">
             <label>By Zip Code
-              <input type="text" placeholder="Enter Zip Code" />
+              <input type="text" placeholder="Enter Zip Code" disabled />
             </label>
           </div>
           <div className="large-4 columns">
