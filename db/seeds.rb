@@ -44,14 +44,18 @@ end
 parks_geo = JSON.parse(File.read('./public/data/lex_parks.geojson'))
 parks = parks_geo['features'].map { |p| p.select { |key,_| key == 'properties' } }
 
-parks.each do |park_from_json|
-  park = Park.create(:name => park_from_json['properties']['PARK_NAME'] ||
-    park_from_json['properties']['NAME'])
+parks.select { |p| p['properties']['PARK_NAME'] }.each do |park_from_json|
+  props = park_from_json['properties']
+
+  park = Park.create(:name => props['PARK_NAME'],
+    :address_1 => props['ADDRESS_1'],
+    :zip => props['ZIP_CODE'])
+
   amenities.each do |key, amenity|
     value = park_from_json['properties'][key]
     if (value && value != 'No' && value != 0)
       pa = ParkAmenity.new(amenity: amenities[key])
-      pa.quanity = value if (value =~ /\d+/)
+      pa.quantity = value if (value =~ /\d+/)
       pa.save!
       park.park_amenities << pa
       p "#{value} \t creating #{park.name} #{key}"
