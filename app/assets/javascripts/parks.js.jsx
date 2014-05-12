@@ -74,8 +74,7 @@ var ParksForm = React.createClass({
 var ParksList = React.createClass({
   render: function() {
     var parkNodes = _.map(this.props.filteredParks, function (park) {
-      var amenities = park.amenities;
-      return <Park name={park.name} amenities={amenities} />
+      return <Park park={park} />
     });
 
     return (
@@ -168,7 +167,6 @@ var Search = React.createClass({
 
 var Park = React.createClass({
   render: function() {
-    // this.props.amenities also exists
     return (
       <div className="row search-result">
         <div className="large-4 columns">
@@ -176,8 +174,8 @@ var Park = React.createClass({
         </div>
         <div className="large-8 columns">
           <li>
-            <h4><a href="">{this.props.name}</a></h4>
-            <p>{this.props.address}</p>
+            <h4><a href="">{this.props.park.name}</a></h4>
+            <p>{this.props.park.address}</p>
           </li>
         </div>
       </div>
