@@ -2,24 +2,34 @@
  * @jsx React.DOM
  */
 var ParksForm = React.createClass({
+  getInitialState: function() {
+    return {showAmenitiesCheckboxes: false};
+  },
+  toggleAmenitiesDisplay: function() {
+    this.setState({showAmenitiesCheckboxes: !this.state.showAmenitiesCheckboxes});
+  },
   render: function() {
     var _this = this;
-    var checkboxes = _.map(this.props.amenities, function(amenity) {
-      return (
-        <li>
-          <label>
-            <input type="checkbox" value={amenity} onChange={_this.handleAmenityChange} />
-            {amenity}
-          </label>
-        </li>
-      );
-    });
+    var checkboxes = '';
 
-    var parks = _.map(this.props.parks, function(park) {
+    if (_this.state.showAmenitiesCheckboxes) {
+      checkboxes = _.map(this.props.amenities, function(amenity) {
+        return (
+          <li>
+            <label>
+              <input type="checkbox" value={amenity} onChange={_this.handleAmenityChange} />
+              {amenity}
+            </label>
+          </li>
+        );
+      });
+    };
+
+    var parkOpts = _.map(this.props.parks, function(park) {
       return <option data-filter-name={ParksFilter.filterName('Name')}
         value={park.name}>{park.name}</option>;
     });
-    var amens = _.map(this.props.amenities, function(amenity) {
+    var amenityOpts = _.map(this.props.amenities, function(amenity) {
       return <option data-filter-name={ParksFilter.filterName('Amenity')}
         value={amenity}>{amenity}</option>;
     });
@@ -29,14 +39,15 @@ var ParksForm = React.createClass({
         <div className="row">
           <div className="large-4 columns">
             <label>
-              Search
+              Search (<a onClick={_this.toggleAmenitiesDisplay} href="#">
+                {this.state.showAmenitiesCheckboxes ? 'Hide' : 'Show'} amenities)</a>
               <ReactSelect2 defaultValue="" onChange={_this.handleSelectChange}>
                 <option value=""> -- </option>
                 <optgroup label="Park">
-                  {parks}
+                  {parkOpts}
                 </optgroup>
                 <optgroup label="Amenity">
-                  {amens}
+                  {amenityOpts}
                 </optgroup>
               </ReactSelect2>
             </label>
@@ -45,6 +56,7 @@ var ParksForm = React.createClass({
         <div className="row">
           <div className="columns four-columns">
             <ul className="no-bullet">
+              {checkboxes}
             </ul>
           </div>
         </div>
