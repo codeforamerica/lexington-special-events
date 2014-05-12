@@ -15,61 +15,47 @@ var ParksForm = React.createClass({
       );
     });
 
-    var parks = _.map(_.sortBy(this.props.parks, function(park) {
-        return park.name;
-      }), function(park) {
-        return <option>{park.name}</option>;
-     });
+    var parks = _.map(this.props.parks, function(park) {
+      return <option data-filter-name={ParksFilter.filterName('Name')}
+        value={park.name}>{park.name}</option>;
+    });
+    var amens = _.map(this.props.amenities, function(amenity) {
+      return <option data-filter-name={ParksFilter.filterName('Amenity')}
+        value={amenity}>{amenity}</option>;
+    });
 
     return (
       <form>
         <div className="row">
           <div className="large-4 columns">
-            <label>By Amenity
-              <select>
-                <option value="show-amenities">Show Amenities</option>
-              </select>
-            </label>
-          </div>
-          <div className="large-4 columns">
-            <label>By Zip Code
-              <input type="text" placeholder="Enter Zip Code" disabled />
-            </label>
-          </div>
-          <div className="large-4 columns">
-            <label>By Name
-              <select className="parkName" onChange={_this.handleParkNameChange}>
+            <label>
+              Search
+              <ReactSelect2 defaultValue="" onChange={_this.handleSelectChange}>
                 <option value=""> -- </option>
-                {parks}
-              </select>
+                <optgroup label="Park">
+                  {parks}
+                </optgroup>
+                <optgroup label="Amenity">
+                  {amens}
+                </optgroup>
+              </ReactSelect2>
             </label>
           </div>
         </div>
         <div className="row">
           <div className="columns four-columns">
             <ul className="no-bullet">
-              {checkboxes}
             </ul>
           </div>
-        </div>
-        <div className="row">
-          <div className="large-4 columns">
-            <a href="#" className="button radius expand">Search</a>
-          </div>
-          <hr />
         </div>
       </form>
     );
   },
-  handleParkNameChange: function(event) {
-    this.props.onParkSearch('Name', event.target.value);
-  },
-  handleAmenityChange: function(event) {
-    if (event.target.checked) {
-      this.props.onParkSearch('Amenity', [event.target.value]);
-    } else {
-      this.props.onParkSearch('Amenity', []);
-    }
+  handleSelectChange: function(event) {
+    var type = $(event.target).find('option:selected').data('filterName');
+    var value = event.target.value;
+
+    this.props.onParkSearch(type, [value]);
   },
 });
 
@@ -98,6 +84,10 @@ var ParksList = React.createClass({
 });
 
 var ParksFilter = {
+  filterNames: ['Name', 'Amenity'],
+  filterName: function(desired) {
+    if (_.contains(this.filterNames, desired)) { return desired; }
+  },
   filter: function(parks, filters) {
     var _this = this;
     var filtered = _.clone(parks);
@@ -113,6 +103,8 @@ var ParksFilter = {
     return this['filterBy' + property](parks, whereValues);
   },
   filterByName: function(parks, name) {
+    if (name instanceof Array) { name = name[0] }
+
     return _.select(parks, function(park) {
       return park.name === name;
     });
@@ -133,14 +125,16 @@ var Search = React.createClass({
     var amenityNames = _.map(this.props.amenities, function(a) {
       return a.name;
     });
-    return {filters: {Name: [], Amenity: []},
+    return {filters: {},
       filteredParks: this.props.parks,
       amenities: amenityNames};
   },
   handleParkSearch: function(searchProperty, whereValues) {
-    var filters = _.clone(this.state.filters);
+    // clear all previous filter state. To cumulate: _.clone(this.state.filters);
+    var filters = {};
     filters[searchProperty] = whereValues;
     this.setState({filters: filters});
+
     // pass filters instead of this.state.filters. The latter may not take yet
     this.setState({filteredParks: ParksFilter.filter(this.props.parks, filters)});
   },
@@ -171,8 +165,7 @@ var Park = React.createClass({
         <div className="large-8 columns">
           <li>
             <h4><a href="">{this.props.name}</a></h4>
-            <p>Address details</p>
-            <p>Upcoming Events</p>
+            <p>{this.props.address}</p>
           </li>
         </div>
       </div>
