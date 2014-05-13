@@ -1,4 +1,5 @@
-## Special Events System for Lexington, KY
+## Special Events System for Lexington, KY [![Build Status](https://api.travis-ci.org/codeforamerica/lexington-special-events.svg?branch=master)](https://travis-ci.org/codeforamerica/lexington-special-events/)
+
 Special Events is a Rails application,
 [here’s](https://github.com/codeforamerica/howto/blob/master/Rails.md)
 how to get Ruby/Rails running on your environment.
