@@ -6,3 +6,6 @@ before_script:
   - bundle exec rake db:create db:migrate DATABASE_URL=postgres://localhost/special_events_test
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
+notifications:
+  webhooks: http://project-monitor.codeforamerica.org/projects/3f8160e4-1aa1-4fac-b40d-c2cbb63db6b7/status
+
