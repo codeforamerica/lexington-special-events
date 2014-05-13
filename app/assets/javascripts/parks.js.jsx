@@ -146,8 +146,30 @@ var Search = React.createClass({
     filters[searchProperty] = whereValues;
     this.setState({filters: filters});
 
+    var filteredParks = ParksFilter.filter(this.props.parks, filters);
+    parks.setStyle(function(feature) {
+      var fillColor;
+
+      var inResults = _.find(filteredParks, function(filteredPark) {
+        return feature.properties['PARK_NAME'] === filteredPark.name;
+      });
+
+      if (inResults) {
+        fillColor = "#000";
+      } else {
+        fillColor = "#18A866";
+      }
+
+      return {
+        fillColor: fillColor,
+        weight: 1,
+        opacity: 0.7,
+        color: "#18A866",
+        fillOpacity: 0.6
+      };
+    });
     // pass filters instead of this.state.filters. The latter may not take yet
-    this.setState({filteredParks: ParksFilter.filter(this.props.parks, filters)});
+    this.setState({filteredParks: filteredParks});
   },
   render: function() {
     return (

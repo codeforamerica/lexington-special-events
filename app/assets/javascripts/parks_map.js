@@ -56,7 +56,6 @@ $(function() {
   };
 
   function onEachFeature(feature, layer) {
-    var park = feature.properties;
     layer.on('click', function(e) {
       map.fitBounds(e.target.getBounds());
     });
@@ -72,7 +71,7 @@ $(function() {
 
   var basemapTiles = L.tileLayer('http://{s}.tiles.mapbox.com/v3/codeforamerica.i6fijbde/{z}/{x}/{y}.png').addTo(map);
 
-  var parks = L.geoJson(lexParks, {
+  parks = L.geoJson(lexParks, {
     style: function(feature) {
       return {
         fillColor: "#18A866",
