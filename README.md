@@ -1,4 +1,4 @@
-## Special Events System for Lexington, KY
+Special Events System for Lexington, KY
 ========
 
 [![Build Status](https://api.travis-ci.org/codeforamerica/lexington-special-events.svg?branch=master)](https://travis-ci.org/codeforamerica/lexington-special-events/)
