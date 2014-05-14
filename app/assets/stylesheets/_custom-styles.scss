@@ -40,6 +40,12 @@
   column-gap:40px;
 }
 
+/* uncomment if search button on events page is used
+.search-button {
+  padding: rem-calc(10);
+  margin-top: rem-calc(20);
+}*/
+
 input[type='checkbox'] {
   margin-right: rem-calc(7);
 }
