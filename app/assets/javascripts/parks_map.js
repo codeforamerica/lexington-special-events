@@ -1,5 +1,4 @@
 $(function() {
-  var map;
 
   var amenities = {
     "AMPHITHEAT": "Amphitheater",
@@ -85,6 +84,17 @@ $(function() {
   })
   .addTo(map);
 
-  centroids = L.geoJson(centroids).addTo(map);
+  centroids = L.geoJson(centroids, {
+    onEachFeature: onEachFeature,
+    pointToLayer: function(feature, latlng) {
+      return L.circleMarker(latlng);
+    },
+    style: function(feature) {
+      return {
+        opacity: 0,
+        fillOpacity: 0
+      };
+    }
+  }).addTo(map);
 
 });
