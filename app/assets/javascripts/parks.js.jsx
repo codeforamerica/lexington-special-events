@@ -147,6 +147,7 @@ var Search = React.createClass({
     this.setState({filters: filters});
 
     var filteredParks = ParksFilter.filter(this.props.parks, filters);
+
     parks.setStyle(function(feature) {
       var fillColor;
 

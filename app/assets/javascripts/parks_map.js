@@ -85,4 +85,6 @@ $(function() {
   })
   .addTo(map);
 
+  centroids = L.geoJson(centroids).addTo(map);
+
 });
