@@ -148,31 +148,16 @@ var Search = React.createClass({
 
     var filteredParks = ParksFilter.filter(this.props.parks, filters);
 
-    centroids.setStyle(function(feature) {
-      var fillColor;
+    centers.clearLayers();
 
-      var inResults = _.find(filteredParks, function(filteredPark) {
-        return feature.properties['PARK_NAME'] === filteredPark.name;
+    _.find(filteredParks, function(filteredPark) {
+      _.find(centroids.features, function(feature) {
+        if (feature.properties['PARK_NAME'] === filteredPark.name) {
+          centers.addData(feature);
+        }
       });
-
-      if (inResults) {
-        opacity = 1;
-        fillOpacity = 1;
-      } else {
-        opacity = 0;
-        fillOpacity = 0;
-      }
-
-      return {
-        radius: 5,
-        fillColor: "black",
-        color: 'white',
-        weight: 1,
-        opacity: opacity,
-        fillOpacity: fillOpacity
-      };
     });
-    
+
     // pass filters instead of this.state.filters. The latter may not take yet
     this.setState({filteredParks: filteredParks});
   },
