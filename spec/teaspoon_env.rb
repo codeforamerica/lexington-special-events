@@ -105,7 +105,7 @@ Teaspoon.configure do |config|
   # Available: phantomjs, selenium
   # PhantomJS: https://github.com/modeset/teaspoon/wiki/Using-PhantomJS
   # Selenium Webdriver: https://github.com/modeset/teaspoon/wiki/Using-Selenium-WebDriver
-  #config.driver = "phantomjs"
+  config.driver = "selenium"
 
   # Specify additional options for the driver.
   #
