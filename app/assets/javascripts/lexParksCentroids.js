@@ -1,4 +1,5 @@
-var centroids = {
+ParksMap = {};
+ParksMap.centroids = {
     "type": "FeatureCollection",
     "features": [
         {

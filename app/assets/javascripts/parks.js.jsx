@@ -148,18 +148,21 @@ var Search = React.createClass({
 
     var filteredParks = ParksFilter.filter(this.props.parks, filters);
 
-    centers.clearLayers();
+    this.addPinsToMap(filteredParks);
+    // pass filters instead of this.state.filters. The latter may not take yet
+    this.setState({filteredParks: filteredParks});
+  },
+  addPinsToMap: function(filteredParks) {
+    ParksMap.centers.clearLayers();
 
     _.find(filteredParks, function(filteredPark) {
-      _.find(centroids.features, function(feature) {
+      _.find(ParksMap.centroids.features, function(feature) {
         if (feature.properties['PARK_NAME'] === filteredPark.name) {
-          centers.addData(feature);
+          ParksMap.centers.addData(feature);
         }
       });
     });
 
-    // pass filters instead of this.state.filters. The latter may not take yet
-    this.setState({filteredParks: filteredParks});
   },
   render: function() {
     return (
