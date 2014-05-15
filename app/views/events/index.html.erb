@@ -26,42 +26,20 @@
   <div class="row">
     <div class="large-8 columns search-results-container">
       <ul class="no-bullet">
-        <div class="row search-result">
-          <div class="large-4 columns">
-            <img src="http://recodetech.files.wordpress.com/2014/05/trojan-horse-2011ronshutterstock.png?w=256&h=256&crop=1"  height="100px" />
+        <% @events.each do |event| %>
+          <div class="row search-result">
+            <div class="large-4 columns">
+              <img src="http://recodetech.files.wordpress.com/2014/05/trojan-horse-2011ronshutterstock.png?w=256&h=256&crop=1"  height="100px" />
+            </div>
+            <div class="large-8 columns">
+              <li>
+                <h4><a href=""><%= event.name %></a></h4>
+                <p><%= event.starts_on.strftime("%A, %B #{event.starts_on.day.ordinalize}") %></p>
+                <p><%= event.location %></p>
+              </li>
+            </div>
           </div>
-          <div class="large-8 columns">
-            <li>
-              <h4><a href="">Event Name</a></h4>
-              <p>Monday, May 12 at 2:00 PM</p>
-              <p>Venue Name</p>
-            </li>
-          </div>
-        </div>
-        <div class="row search-result">
-          <div class="large-4 columns">
-            <img src="http://recodetech.files.wordpress.com/2014/05/trojan-horse-2011ronshutterstock.png?w=256&h=256&crop=1"  height="100px" />
-          </div>
-          <div class="large-8 columns">
-            <li>
-              <h4><a href="">Event Name</a></h4>
-              <p>Monday, May 12 at 2:00 PM</p>
-              <p>Venue Name</p>
-            </li>
-          </div>
-        </div>
-        <div class="row search-result">
-          <div class="large-4 columns">
-            <img src="http://recodetech.files.wordpress.com/2014/05/trojan-horse-2011ronshutterstock.png?w=256&h=256&crop=1"  height="100px" />
-          </div>
-          <div class="large-8 columns">
-            <li>
-              <h4><a href="">Event Name</a></h4>
-              <p>Monday, May 12 at 2:00 PM</p>
-              <p>Venue Name</p>
-            </li>
-          </div>
-        </div>
+        <% end %>
       </ul>
     </div>
     <div class="large-4 columns">

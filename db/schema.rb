@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514180254) do
+ActiveRecord::Schema.define(version: 20140515003417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,17 +21,17 @@ ActiveRecord::Schema.define(version: 20140514180254) do
   end
 
   create_table "events", force: true do |t|
-    t.string   "name"
-    t.datetime "start"
-    t.string   "location"
-    t.string   "street_closings"
-    t.string   "status"
+    t.string "name"
+    t.date   "starts_on"
+    t.string "location"
+    t.string "street_closings"
+    t.string "status"
+    t.time   "start_time"
   end
 
   create_table "park_amenities", force: true do |t|
     t.integer "park_id"
     t.integer "amenity_id"
-    t.integer "quantity"
   end
 
   add_index "park_amenities", ["amenity_id", "park_id"], name: "index_park_amenities_on_amenity_id_and_park_id", using: :btree
