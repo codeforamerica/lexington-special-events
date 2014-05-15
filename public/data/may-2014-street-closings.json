@@ -1,0 +1,444 @@
+{
+  "rows" : [
+    {
+      "month" : "January",
+      "day" : "19",
+      "event" : "Vigil for Life",
+      "LOCATION" : "RFS Courthouse Plaza",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Applied"
+    },
+    {
+      "month" : "January",
+      "day" : "20",
+      "event" : "MLK day Freedom March",
+      "LOCATION" : "Vine Street from Heritage Hall to Main Street & back to Heritage Hall",
+      "STREET CLOSINGS" : "Rolling Closure from Vine Street from Heritage Hall to Main Street & back to Heritage Hall",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "March",
+      "day" : "7",
+      "event" : "Food Truck Fridays",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "March",
+      "day" : "15",
+      "event" : "Shamrock Shuffle 5K",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "East Vine to Midland to Third to East Main to intersection at West Main & South Upper",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "March",
+      "day" : "15",
+      "event" : "St. Patricks day Festival & Parade",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "Festival: Short between Mill & upper. Parade: Midland from third to Main, Main from Midland to Mill. Cross Streets",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "March",
+      "day" : "29",
+      "event" : "Run the Bluegrass 1/2 Marathon",
+      "LOCATION" : "Keeneland & surrounding roads",
+      "STREET CLOSINGS" : "Rice Rd. between Keeneland Gate#3 & Bosworth. Bosworth.Elkchester.Redd.Old Frankfort Pike btwn Redd & Elkchester. Van Meter",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "April",
+      "day" : "3,10, 17,24",
+      "event" : "Thursday Night Live",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "April",
+      "day" : "4",
+      "event" : "Food Truck Fridays",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "April",
+      "day" : "5",
+      "event" : "Bluegrass Bizarre",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "April",
+      "day" : "13",
+      "event" : "Southern Middle School Lightning Strike 5K",
+      "LOCATION" : "Tates Creek High School",
+      "STREET CLOSINGS" : "Gainesway, Greentree, Milan, and Centre Parkway",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "April",
+      "day" : "18",
+      "event" : "Downtown Trash Bash",
+      "LOCATION" : "All over downtown",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "April",
+      "day" : "19",
+      "event" : "Bully Breed Awareness Walk",
+      "LOCATION" : "Thoroughbred Park",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "April",
+      "day" : "22",
+      "event" : "Picnic for the Planet",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "May",
+      "day" : "1,8,15,22,29",
+      "event" : "Thursday Night Live",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "May",
+      "day" : "2",
+      "event" : "Food Truck Fridays",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "May",
+      "day" : "2",
+      "event" : "Noli Night Market",
+      "LOCATION" : "Bryan Avenue",
+      "STREET CLOSINGS" : "Yes. 700 block of Bryan Avenue",
+      "STATUS" : "Applied"
+    },
+    {
+      "month" : "May",
+      "day" : "10,11",
+      "event" : "Mayfest",
+      "LOCATION" : "Gratz Park",
+      "STREET CLOSINGS" : "3rd btwn Broadway & Upper. Mill & Market btwn 2nd & 3rd. Mechanic btwn Upper & Market. New Street btwn Broadway & Mill",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "May",
+      "day" : "10",
+      "event" : "Sharks on the Run 5K",
+      "LOCATION" : "Sandersville Elementary",
+      "STREET CLOSINGS" : "Sandersville Road, plus neighborhood streets",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "May",
+      "day" : "31",
+      "event" : "Bike Lexington",
+      "LOCATION" : "RFS Courthouse Plaza",
+      "STREET CLOSINGS" : "Limestone between Main & Barr Street. Short Street between Upper & MLK. Rolling closure during 8 mile ride (route TBD)",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "June",
+      "day" : "6",
+      "event" : "Food Truck Fridays",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "June",
+      "day" : "5,12,19,26",
+      "event" : "Thursday Night Live",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "June",
+      "day" : "6",
+      "event" : "Noli Night Market",
+      "LOCATION" : "Bryan Avenue",
+      "STREET CLOSINGS" : "Yes. 700 block of Bryan Avenue",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "June",
+      "day" : "14",
+      "event" : "Downtown Poker Stroll",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "June",
+      "day" : "13",
+      "event" : "Vintage KY Wine & Beer Fest",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "NO",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "June",
+      "day" : "20",
+      "event" : "World Refugee Summit",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "June",
+      "day" : "20",
+      "event" : "Keeneland Concours-Maserati Mingle",
+      "LOCATION" : "RFS Courthouse Plaza",
+      "STREET CLOSINGS" : "Short between Limestone & MLK",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "June",
+      "day" : "21",
+      "event" : "Festival of the Streets",
+      "LOCATION" : "RFS Courthouse Plaza",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "June",
+      "day" : "27",
+      "event" : "Phoenix Fridays",
+      "LOCATION" : "Phoenix Park",
+      "STREET CLOSINGS" : "NO",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "June",
+      "day" : "28",
+      "event" : "Lexington Pride Fest",
+      "LOCATION" : "RFS Courthouse Plaza",
+      "STREET CLOSINGS" : "Short between Limestone & MLK",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "July",
+      "day" : "3",
+      "event" : "Patriotic Concert",
+      "LOCATION" : "Transy",
+      "STREET CLOSINGS" : "3rd Street between Broaway & Upper. Mill & Market Streets from 2nd to 3rd, beginning at 5pm",
+      "STATUS" : "Applied"
+    },
+    {
+      "month" : "July",
+      "day" : "3,10,17,24,31",
+      "event" : "Thursday Night Live",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Applied"
+    },
+    {
+      "month" : "July",
+      "day" : "4",
+      "event" : "Noli Night Market",
+      "LOCATION" : "Bryan Avenue",
+      "STREET CLOSINGS" : "Yes. 700 block of Bryan Avenue",
+      "STATUS" : "Applied"
+    },
+    {
+      "month" : "July",
+      "day" : "11",
+      "event" : "Vintage KY Wine & Beer Fest",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "NO",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "July",
+      "day" : "11",
+      "event" : "Food Truck Fridays",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "July",
+      "day" : "25",
+      "event" : "Phoenix Fridays",
+      "LOCATION" : "Phoenix Park",
+      "STREET CLOSINGS" : "NO",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "August",
+      "day" : "1",
+      "event" : "Food Truck Fridays",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "August",
+      "day" : "1",
+      "event" : "Noli Night Market",
+      "LOCATION" : "Bryan Avenue",
+      "STREET CLOSINGS" : "Yes. 700 block of Bryan Avenue",
+      "STATUS" : "Applied"
+    },
+    {
+      "month" : "August",
+      "day" : "7,14,21,28",
+      "event" : "Thursday Night Live",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "August",
+      "day" : "8",
+      "event" : "Vintage KY Wine & Beer Fest",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "NO",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "August",
+      "day" : "16",
+      "event" : "Downtown Poker Stroll",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Applied"
+    },
+    {
+      "month" : "August",
+      "day" : "22",
+      "event" : "Phoenix Fridays",
+      "LOCATION" : "Phoenix Park",
+      "STREET CLOSINGS" : "NO",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "August",
+      "day" : "29",
+      "event" : "Fest-of-Ales",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "Short Street between Mill & Upper",
+      "STATUS" : "Applied"
+    },
+    {
+      "month" : "September",
+      "day" : "4,11,18,25",
+      "event" : "Thursday Night Live",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "September",
+      "day" : "5",
+      "event" : "Food Truck Fridays",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "September",
+      "day" : "5",
+      "event" : "Noli Night Market",
+      "LOCATION" : "Bryan Avenue",
+      "STREET CLOSINGS" : "Yes. 700 block of Bryan Avenue",
+      "STATUS" : "Applied"
+    },
+    {
+      "month" : "September",
+      "day" : "6",
+      "event" : "Lexington-Bluegrass Pagan Pride",
+      "LOCATION" : "RFS Courthouse Plaza",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Applied"
+    },
+    {
+      "month" : "September",
+      "day" : "12",
+      "event" : "Vintage KY Wine & Beer Fest",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "NO",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "September",
+      "day" : "26",
+      "event" : "Phoenix Fridays",
+      "LOCATION" : "Phoenix Park",
+      "STREET CLOSINGS" : "NO",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "October",
+      "day" : "2,9,16,23,30",
+      "event" : "Thursday Night Live",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "October",
+      "day" : "3",
+      "event" : "Food Truck Fridays",
+      "LOCATION" : "5/3rd Pavilion",
+      "STREET CLOSINGS" : "No",
+      "STATUS" : "Approved"
+    },
+    {
+      "month" : "October",
+      "day" : "3",
+      "event" : "Noli Night Market",
+      "LOCATION" : "Bryan Avenue",
+      "STREET CLOSINGS" : "Yes. 700 block of Bryan Avenue",
+      "STATUS" : "Applied"
+    },
+    {
+      "month" : "October",
+      "day" : "4",
+      "event" : "Race for the Cure",
+      "LOCATION" : "RFS Courthouse Plaza",
+      "STREET CLOSINGS" : "YES. TBD",
+      "STATUS" : "Applied"
+    },
+    {
+      "month" : "October",
+      "day" : "11",
+      "event" : "The Bourbon Chase",
+      "LOCATION" : "Triangle Park Area",
+      "STREET CLOSINGS" : "Main from Jefferson to Broadway",
+      "STATUS" : "Applied"
+    },
+    {
+      "month" : "November",
+      "day" : "7",
+      "event" : "Noli Night Market",
+      "LOCATION" : "Bryan Avenue",
+      "STREET CLOSINGS" : "Yes. 700 block of Bryan Avenue",
+      "STATUS" : "Applied"
+    },
+    {
+      "month" : "December",
+      "day" : "5",
+      "event" : "Noli Night Market",
+      "LOCATION" : "Bryan Avenue",
+      "STREET CLOSINGS" : "Yes. 700 block of Bryan Avenue",
+      "STATUS" : "Applied"
+    }
+  ]
+}

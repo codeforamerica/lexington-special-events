@@ -10,7 +10,11 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require vendor
-//= require_tree .
-
-$(function(){ $(document).foundation(); });
+//= require jquery
+//= require foundation
+//= require react
+//= require react_ujs
+//= require lodash
+//= require leaflet
+//= require select2
+//= require react_select2
