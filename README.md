@@ -9,6 +9,8 @@ Special Events System for Lexington, KY
 
 Lexington is an amazing place, and there are many opportunities for you to make it _your_ city. Through learning about events and making it easy to plan them, we can build a great community together.
 
+----------------------------------------------------------------------------------------
+
 Special Events is a Rails application,
 [here’s](https://github.com/codeforamerica/howto/blob/master/Rails.md)
 how to get Ruby/Rails running on your environment.
