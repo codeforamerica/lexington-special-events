@@ -7,7 +7,7 @@ feature 'Filters list of parks' do
     Park.create(:name => 'Other Park')
 
     visit '/'
-    select('Basketball', :from => 'Search')
+    select('Basketball', :from => 'By Keyword')
     expect(page).to have_content('Total of 1 park')
     expect(page).to have_content('BBall Park')
   end
@@ -17,7 +17,7 @@ feature 'Filters list of parks' do
     Park.create(:name => 'Other Park')
 
     visit '/'
-    select('Cool Park', :from => 'Search')
+    select('Cool Park', :from => 'By Keyword')
     expect(page).to have_content('1 park')
     expect(page).to have_content('Cool Park')
   end

@@ -37,12 +37,12 @@ var ParksForm = React.createClass({
     return (
       <form>
         <div className="row">
-          <div className="large-4 columns">
+          <div className="large-5 columns">
             <label>
-              Search (<a onClick={_this.toggleAmenitiesDisplay} href="#">
+              By Keyword (<a onClick={_this.toggleAmenitiesDisplay} href="#">
                 {this.state.showAmenitiesCheckboxes ? 'Hide' : 'Show'} amenities)</a>
               <ReactSelect2 defaultValue="" onChange={_this.handleSelectChange}>
-                <option value=""> -- </option>
+                <option value=""> e.g. park name, activity, facility </option>
                 <optgroup label="Park">
                   {parkOpts}
                 </optgroup>
@@ -159,6 +159,7 @@ var Search = React.createClass({
         </div>
         <ParksForm onParkSearch={this.handleParkSearch} amenities={this.state.amenities}
           parks={this.props.parks} />
+        <hr />
         <ParksList filteredParks={this.state.filteredParks} />
       </div>
     );
