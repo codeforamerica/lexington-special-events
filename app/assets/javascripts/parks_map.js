@@ -1,5 +1,4 @@
 $(function() {
-  var map;
 
   var amenities = {
     "AMPHITHEAT": "Amphitheater",
@@ -56,7 +55,6 @@ $(function() {
   };
 
   function onEachFeature(feature, layer) {
-    var park = feature.properties;
     layer.on('click', function(e) {
       map.fitBounds(e.target.getBounds());
     });
@@ -85,5 +83,7 @@ $(function() {
     onEachFeature: onEachFeature
   })
   .addTo(map);
+
+  ParksMap.centers = L.geoJson().addTo(map);
 
 });
