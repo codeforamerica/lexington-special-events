@@ -1,10 +1,10 @@
 namespace :events do
   desc "Load events"
-  task :delete_all do
+  task :delete_all => :environment do
     Event.delete_all
   end
 
-  task :load do
+  task :load => :environment do
     events = JSON.parse(File.read('public/data/may-2014-street-closings.json'))
     events['rows'].each do |event|
       db_event = Event.create!(
