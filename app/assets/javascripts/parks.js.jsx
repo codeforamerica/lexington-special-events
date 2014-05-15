@@ -150,12 +150,11 @@ var Search = React.createClass({
 
     centers.clearLayers();
 
-    _.find(filteredParks, function(filteredPark) {
-      _.find(centroids.features, function(feature) {
-        if (feature.properties['PARK_NAME'] === filteredPark.name) {
-          centers.addData(feature);
-        }
+    filteredParks.forEach(function(filteredPark) {
+      var centroid = _.find(centroids.features, function(feature) {
+        return (feature.properties['PARK_NAME'] === filteredPark.name);
       });
+      centers.addData(centroid);
     });
 
     // pass filters instead of this.state.filters. The latter may not take yet

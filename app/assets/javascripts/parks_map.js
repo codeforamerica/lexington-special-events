@@ -70,7 +70,7 @@ $(function() {
 
   var basemapTiles = L.tileLayer('http://{s}.tiles.mapbox.com/v3/codeforamerica.i6fijbde/{z}/{x}/{y}.png').addTo(map);
 
-  parks = L.geoJson(lexParks, {
+  var parks = L.geoJson(lexParks, {
     style: function(feature) {
       return {
         fillColor: "#18A866",
