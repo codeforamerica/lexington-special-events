@@ -6,7 +6,7 @@ feature 'Filters list of parks' do
     bball_park.amenities << Amenity.create(name: 'Basketball')
     Park.create(:name => 'Other Park')
 
-    visit '/'
+    visit parks_path
     select('Basketball', :from => 'By Keyword')
     expect(page).to have_content('Total of 1 park')
     expect(page).to have_content('BBall Park')
@@ -17,7 +17,7 @@ feature 'Filters list of parks' do
     bball_park.amenities << Amenity.create(name: 'Basketball')
     Park.create(:name => 'Other Park')
 
-    visit '/'
+    visit parks_path
     click_link 'Show amenities'
     first("input[type='checkbox']").set(true)
     expect(page).to have_content('Total of 1 park')
@@ -28,7 +28,7 @@ feature 'Filters list of parks' do
     Park.create(:name => 'Cool Park')
     Park.create(:name => 'Other Park')
 
-    visit '/'
+    visit parks_path
     select('Cool Park', :from => 'By Keyword')
     expect(page).to have_content('1 park')
     expect(page).to have_content('Cool Park')
