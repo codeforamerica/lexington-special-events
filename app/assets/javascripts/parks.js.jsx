@@ -69,6 +69,10 @@ var ParksForm = React.createClass({
 
     this.props.onParkSearch(type, [value]);
   },
+  handleAmenityChange: function(event) {
+    var target = event.target;
+    this.props.onParkSearch('Amenity', target.checked ? [target.value] : []);
+  }
 });
 
 var ParksList = React.createClass({
