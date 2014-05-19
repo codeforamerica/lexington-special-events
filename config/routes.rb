@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'parks#index'
+  root 'events#index'
 
   resources :parks
   resources :events

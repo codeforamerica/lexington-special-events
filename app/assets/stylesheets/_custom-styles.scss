@@ -3,6 +3,7 @@
   background-color: #fff;
   margin-left: auto;
   margin-right: auto;
+  padding-top: rem-calc(20);
   padding-left: rem-calc(20);
   padding-right: rem-calc(20);
   border: 1px solid rgba(0,0,0,0.10);
@@ -13,13 +14,29 @@
   height: 375px;
 }
 
-.border-bottom {
-  border-bottom: 1px solid rgba(0,0,0,0.10);
+#gallery-marquee {
+  background: url('/assets/trianglepark.jpg') no-repeat;
+  height: 550px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  padding: 170px 20px 0 20px;
+  z-index: 50;
+  overflow: hidden;
+  text-align: center;
+  h1 {
+    font-size: rem-calc(60);
+    color: #fff;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: rem-calc(40);
+  }
 }
 
-.search-results-container {
-  overflow: auto;
-  height: 600px;
+.border-bottom {
+  border-bottom: 1px solid rgba(0,0,0,0.10);
 }
 
 .search-result {
